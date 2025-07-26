@@ -1,0 +1,103 @@
+﻿.datePicker {
+    border: 1px solid #C6BFD7;
+    width: 190px;
+    direction: rtl;
+    font-family: Tahoma;
+    font-size: 12px;
+    background-color: #e8f2fa;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    color: #375170;
+}
+
+.datePickerRow {
+    background-color: White;
+}
+
+.datePickerFriDay {
+    background-color: #FFCBB3;
+}
+
+.datePickerDay {
+    width: 25px;
+    height: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .datePickerDay:hover {
+        background-color: #FFee88;
+    }
+
+.datePickerDaySelect {
+    text-align: center;
+    cursor: pointer;
+    background-color: #6666FF;
+    color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.datePickerToday {
+    text-align: center;
+    cursor: pointer;
+    background-color: #8FD08C;
+    color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.datePickerFooter td {
+    padding-top: 5px;
+}
+
+.datePicker .button {
+    border-radius: 2px;
+    height: 15px;
+    border: 1px solid #c2cedc;
+    font-family: Tahoma;
+    font-size: 11px;
+    background: linear-gradient(#dcecff, #bacadd);
+    cursor: pointer;
+    margin: 0px;
+    box-shadow: none;
+    display: inline-block;
+    text-align: center;
+    user-select: none;
+}
+
+.datePickerHeader {
+    padding-bottom: 10px;
+}
+
+    .datePickerHeader .button {
+        width: 15px;
+        padding: 2px 0px;
+    }
+
+.datePickerFooter .button {
+    padding: 2px 8px;
+}
+
+    .datePickerHeader .button:hover, .datePickerFooter .button:hover {
+        border: 1px solid #FFCC66;
+        background: linear-gradient(#FFee88,#eFde78);
+    }
+
+.datePickerYear, .datePickerMonth {
+    background-color: White;
+    text-align: center;
+    color: #116f1c;
+}
+
+.datePickerMonth {
+    width: 60px;
+}
+
+.datePickerYear {
+    width: 35px;
+}
+
+.datePickerHeaderSpliter {
+    width: 20px;
+    display: inline-block;
+}
