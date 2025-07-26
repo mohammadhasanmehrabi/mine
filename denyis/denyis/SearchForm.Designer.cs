@@ -186,6 +186,7 @@
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "✏️ ویرایش";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnClearSearch
             // 
@@ -198,6 +199,7 @@
             this.btnClearSearch.TabIndex = 14;
             this.btnClearSearch.Text = "✏️ پاک کردن";
             this.btnClearSearch.UseVisualStyleBackColor = false;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
             // btnDellet
             // 
@@ -210,6 +212,7 @@
             this.btnDellet.TabIndex = 13;
             this.btnDellet.Text = "🧹 پاک کردن فرم";
             this.btnDellet.UseVisualStyleBackColor = false;
+            this.btnDellet.Click += new System.EventHandler(this.btnDellet_Click);
             // 
             // btnDelete
             // 
@@ -222,6 +225,7 @@
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "🗑️ حذف";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -234,6 +238,7 @@
             this.btnEdit.TabIndex = 11;
             this.btnEdit.Text = "✏️ ویرایش";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dataGridView1
             // 
@@ -298,6 +303,7 @@
             this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPatients.Size = new System.Drawing.Size(1538, 218);
             this.dgvPatients.TabIndex = 2;
+            this.dgvPatients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellClick);
             // 
             // panel1
             // 
@@ -470,6 +476,7 @@
             this.txtunit_price.Name = "txtunit_price";
             this.txtunit_price.Size = new System.Drawing.Size(112, 34);
             this.txtunit_price.TabIndex = 51;
+            this.txtunit_price.TextChanged += new System.EventHandler(this.txtunit_price_TextChanged);
             // 
             // txttooth_type
             // 
@@ -874,6 +881,7 @@
             this.btnPremolar1Right.Tag = "فک بالا - پرمولر اول راست";
             this.btnPremolar1Right.Text = "پرمولر اول راست";
             this.btnPremolar1Right.UseVisualStyleBackColor = false;
+            this.btnPremolar1Right.Click += new System.EventHandler(this.ToothButton_Click);
             // 
             // btnCanineRight
             // 
@@ -887,6 +895,7 @@
             this.btnCanineRight.Tag = "فک بالا - نیش راست";
             this.btnCanineRight.Text = "نیش راست";
             this.btnCanineRight.UseVisualStyleBackColor = false;
+            this.btnCanineRight.Click += new System.EventHandler(this.ToothButton_Click);
             // 
             // btnLateralRight
             // 
@@ -900,6 +909,7 @@
             this.btnLateralRight.Tag = "فک بالا - لترال راست";
             this.btnLateralRight.Text = "لترال راست";
             this.btnLateralRight.UseVisualStyleBackColor = false;
+            this.btnLateralRight.Click += new System.EventHandler(this.ToothButton_Click);
             // 
             // btnCentralRight
             // 
@@ -913,6 +923,7 @@
             this.btnCentralRight.Tag = "فک بالا - سانترال راست";
             this.btnCentralRight.Text = "سانترال راست";
             this.btnCentralRight.UseVisualStyleBackColor = false;
+            this.btnCentralRight.Click += new System.EventHandler(this.ToothButton_Click);
             // 
             // grpImages
             // 
@@ -1464,6 +1475,7 @@
             this.chkSelectAllTeeth.TabIndex = 60;
             this.chkSelectAllTeeth.Text = "انتخاب همه دندان‌ها";
             this.chkSelectAllTeeth.UseVisualStyleBackColor = true;
+            this.chkSelectAllTeeth.CheckedChanged += new System.EventHandler(this.chkSelectAllTeeth_CheckedChanged);
             // 
             // txtSelectedTeeth
             // 
