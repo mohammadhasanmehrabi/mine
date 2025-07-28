@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Globalization;
 
 namespace denyis
@@ -14,6 +18,9 @@ namespace denyis
         List<ToothButton> toothButtons = new List<ToothButton>();
         private string toothImagePath = "";
         private string doctorSignPath = "";
+        private List<Cheque> cheques = new List<Cheque>();
+        private MySqlManager mysqlManager;
+        private bool inventoryDecreased = false; // برای جلوگیری از کم کردن مکرر موجودی
         // در بالای کلاس این متغیرها را اضافه کنید:
         private DateTime selectedPersianDate = DateTime.Now;
 
@@ -195,6 +202,10 @@ namespace denyis
         public PatientForm()
         {
             InitializeComponent();
+            mysqlManager = new MySqlManager();
+            SetupTeethComboBoxes();
+            SetupChequeDataGridView();
+            SetupAdditionalTeethFeatures();
         }
         private void ToothButton_Click(object sender, EventArgs e)
         {
@@ -214,9 +225,15 @@ namespace denyis
                 selectedTeeth.Add(toothId);
                 btn.BackColor = Color.DarkBlue;
                 btn.ForeColor = Color.White;
+                
+                // اگر تعداد دندان‌ها به 28 رسید، موجودی کم کن
+                if (selectedTeeth.Count == 28)
+                {
+                    DecreaseInventoryForCompleteSet();
+                }
             }
 
-            // نمایش لیست دندان‌های انتخاب‌شده بر اساس Tag (نه Text)
+            // نمایش لیست دندان‌های انتخاب‌شده
             txtSelectedTeeth.Text = string.Join(" / ", selectedTeeth.Select(t => t.Trim()));
             
             // محاسبه قیمت کل
@@ -225,30 +242,36 @@ namespace denyis
         private void SelectAllTeeth(bool selectAll)
         {
             selectedTeeth.Clear();
-
-            foreach (Button btn in panelTeeth.Controls.OfType<Button>())
+            if (selectAll)
             {
-                string tag = btn.Tag?.ToString();
-                if (string.IsNullOrEmpty(tag)) continue;
-
-                if (selectAll)
+                // اضافه کردن فقط 28 دندان (بدون دندان‌های عقل)
+                int selectedCount = 0;
+                foreach (Button btn in panelTeeth.Controls.OfType<Button>())
                 {
-                    selectedTeeth.Add(tag);
-                    btn.BackColor = Color.DarkBlue;
-                    btn.ForeColor = Color.White;
+                    // دندان‌های عقل معمولاً در موقعیت‌های خاصی هستند
+                    // ما فقط 28 دندان اول را انتخاب می‌کنیم
+                    if (selectedCount < 28)
+                    {
+                        btn.BackColor = Color.LightBlue;
+                        btn.ForeColor = Color.Black;
+                        selectedTeeth.Add(btn.Tag?.ToString() ?? btn.Text);
+                        selectedCount++;
+                    }
                 }
-                else
+                
+                // کم کردن موجودی از انبار اگر تمام 28 دندان انتخاب شدند
+                DecreaseInventoryForCompleteSet();
+            }
+            else
+            {
+                // پاک کردن انتخاب تمام دندان‌ها
+                foreach (Button btn in panelTeeth.Controls.OfType<Button>())
                 {
                     btn.BackColor = SystemColors.Control;
                     btn.ForeColor = Color.Black;
                 }
             }
-
-            // به‌روزرسانی تکست‌باکس
-            txtSelectedTeeth.Text = string.Join(" / ", selectedTeeth.Select(t => t.Trim()));
-            
-            // محاسبه قیمت کل
-            CalculateTotalPrice();
+            UpdateSelectedTeethText();
         }
         private bool ValidateForm()
         {
@@ -281,8 +304,7 @@ namespace denyis
             }
 
             // گروه اطلاعات پرداخت
-            if (string.IsNullOrEmpty(txtTotalAmount.Text) ||
-                cmbPaymentType.SelectedIndex == -1)
+            if (cmbPaymentType.SelectedIndex == -1)
             {
                 MessageBox.Show("لطفاً اطلاعات پرداخت را کامل کنید", "خطا",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -321,16 +343,16 @@ namespace denyis
             txtVisitNotes.Clear();
 
             // پاک کردن اطلاعات پرداخت
-            txtTotalAmount.Clear();
             cmbPaymentType.SelectedIndex = -1;
-            txtCheckNumber.Clear();
-            dateTimePicker1dtpCheckDate.Value = DateTime.Now;
             txtPaymentNotes.Clear();
+            cheques.Clear();
+            RefreshChequeDataGridView();
 
             // پاک کردن دندان‌های انتخاب شده
             txtSelectedTeeth.Clear();
             selectedTeeth.Clear();
             chkSelectAllTeeth.Checked = false;
+            inventoryDecreased = false; // ریست کردن علامت کم کردن موجودی
 
             // ریست کردن ComboBox های دندان
             cmbTeethSize.SelectedIndex = 1; // متوسط
@@ -342,6 +364,29 @@ namespace denyis
                 btn.BackColor = SystemColors.Control;
                 btn.ForeColor = Color.Black;
             }
+
+            // پاک کردن ویژگی‌های اضافی
+            comboBaseFractureTop.SelectedIndex = 0;
+            comboBaseFractureBottom.SelectedIndex = 0;
+            checkSoftLayerTop.Checked = false;
+            checkSoftLayerBottom.Checked = false;
+            checkHardRedTop.Checked = false;
+            checkHardRedBottom.Checked = false;
+            checkHardClearTop.Checked = false;
+            checkHardClearBottom.Checked = false;
+            // پاک کردن chkSkeshen
+            var chkSkeshen = Controls.Find("chkSkeshen", true).FirstOrDefault() as CheckBox;
+            if (chkSkeshen != null)
+            {
+                chkSkeshen.Checked = false;
+            }
+
+            // پاک کردن قیمت‌های اضافی
+            txtPriceBaseFracture.Clear();
+            txtPriceSoftLayer.Clear();
+            txtPriceHardRedLayer.Clear();
+            txtPriceHardClearLayer.Clear();
+            saksionprice.Clear();
 
             // پاک کردن تصاویر
             picToothImage.Image = null;
@@ -424,11 +469,6 @@ namespace denyis
 
         private void SetupTeethComboBoxes()
         {
-            // تنظیم ComboBox اندازه دندان
-            cmbTeethSize.Items.Clear();
-            cmbTeethSize.Items.AddRange(new object[] { "کوچک", "متوسط", "بزرگ" });
-            cmbTeethSize.SelectedIndex = 1; // پیش‌فرض: متوسط
-
             // تنظیم ComboBox رنگ دندان
             cmbTeethColor.Items.Clear();
             cmbTeethColor.Items.AddRange(new object[] { 
@@ -438,23 +478,270 @@ namespace denyis
                 "D2", "D3", "D4" 
             });
             cmbTeethColor.SelectedIndex = 0; // پیش‌فرض: A1
+
+            // تنظیم ComboBox نوع دندان از انبار
+            LoadToothTypesFromInventory();
+        }
+
+        private void LoadToothTypesFromInventory()
+        {
+            try
+            {
+                cmbToothType.Items.Clear();
+                cmbToothType.Items.Add("انتخاب کنید"); // گزینه پیش‌فرض
+                
+                // بارگذاری محصولات دندان از انبار
+                var dentalItems = mysqlManager.GetDentalItemsFromInventory();
+                foreach (var item in dentalItems)
+                {
+                    cmbToothType.Items.Add(item.ProductName);
+                }
+                
+                cmbToothType.SelectedIndex = 0; // پیش‌فرض: انتخاب کنید
+                
+                // اضافه کردن event handler
+                cmbToothType.SelectedIndexChanged += CmbToothType_SelectedIndexChanged;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در بارگذاری انواع دندان: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CmbToothType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbToothType.SelectedIndex > 0) // اگر گزینه "انتخاب کنید" انتخاب نشده
+                {
+                    string selectedToothType = cmbToothType.SelectedItem.ToString();
+                    
+                    // دریافت اطلاعات دندان از انبار
+                    var dentalItems = mysqlManager.GetDentalItemsFromInventory();
+                    var selectedItem = dentalItems.FirstOrDefault(item => item.ProductName == selectedToothType);
+                    
+                    if (selectedItem != null)
+                    {
+                        // تنظیم رنگ دندان
+                        cmbTeethColor.Text = selectedItem.ToothColor;
+                        
+                        // تنظیم قیمت واحد
+                        txtunit_price.Text = selectedItem.UnitPrice.ToString("N0");
+                        
+                        // نمایش پیام
+                        MessageBox.Show($"رنگ دندان: {selectedItem.ToothColor}\nقیمت: {selectedItem.UnitPrice:N0} تومان", 
+                            "اطلاعات دندان", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در بارگذاری اطلاعات دندان: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // متد جدید برای کم کردن موجودی از انبار
+        private void DecreaseInventoryForCompleteSet()
+        {
+            try
+            {
+                if (cmbToothType.SelectedIndex > 0 && selectedTeeth.Count == 28 && !inventoryDecreased) // اگر نوع دندان انتخاب شده و تمام 28 دندان انتخاب شده و قبلاً کم نشده
+                {
+                    string selectedToothType = cmbToothType.SelectedItem.ToString();
+                    
+                    // دریافت اطلاعات دندان از انبار
+                    var dentalItems = mysqlManager.GetDentalItemsFromInventory();
+                    var selectedItem = dentalItems.FirstOrDefault(item => item.ProductName == selectedToothType);
+                    
+                    if (selectedItem != null && selectedItem.Quantity > 0)
+                    {
+                        // کم کردن 1 عدد از موجودی
+                        selectedItem.Quantity -= 1;
+                        
+                        // به‌روزرسانی در دیتابیس
+                        mysqlManager.UpdateInventoryItem(selectedItem);
+                        
+                        // علامت‌گذاری که موجودی کم شده
+                        inventoryDecreased = true;
+                        
+                        MessageBox.Show($"1 عدد از موجودی '{selectedToothType}' کم شد.\nموجودی جدید: {selectedItem.Quantity} عدد", 
+                            "کم کردن موجودی", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedItem != null && selectedItem.Quantity <= 0)
+                    {
+                        MessageBox.Show($"موجودی '{selectedToothType}' تمام شده است!", 
+                            "هشدار موجودی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (selectedItem == null)
+                    {
+                        MessageBox.Show($"نوع دندان '{selectedToothType}' در انبار یافت نشد!", 
+                            "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در کم کردن موجودی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateSelectedTeethText()
+        {
+            // نمایش لیست دندان‌های انتخاب‌شده
+            txtSelectedTeeth.Text = string.Join(" / ", selectedTeeth.Select(t => t.Trim()));
+            
+            // محاسبه قیمت کل
+            CalculateTotalPrice();
+        }
+
+        private void SetupChequeDataGridView()
+        {
+            try
+            {
+                dgvCheques.AutoGenerateColumns = false;
+                dgvCheques.Columns.Clear();
+                dgvCheques.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvCheques.AllowUserToAddRows = false;
+                dgvCheques.AllowUserToDeleteRows = false;
+                dgvCheques.ReadOnly = true;
+
+                dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Number",
+                    HeaderText = "شماره چک",
+                    Width = 120
+                });
+
+                dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Amount",
+                    HeaderText = "مبلغ",
+                    Width = 100,
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" }
+                });
+
+                dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Date",
+                    HeaderText = "تاریخ چک",
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy/MM/dd" }
+                });
+
+                dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Description",
+                    HeaderText = "توضیحات",
+                    Width = 150
+                });
+
+                // اضافه کردن یک چک پیش‌فرض
+                cheques.Clear();
+                cheques.Add(new Cheque
+                {
+                    Number = "1",
+                    Amount = 0,
+                    Date = DateTime.Now,
+                    Description = "چک پیش‌فرض"
+                });
+                RefreshChequeDataGridView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در تنظیم جدول چک‌ها: {ex.Message}", "خطا", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CalculateTotalPrice()
         {
             try
             {
+                decimal totalPrice = 0;
+
+                // محاسبه قیمت دندان‌های انتخاب شده
                 decimal unitPrice = 0;
                 if (decimal.TryParse(txtunit_price.Text, out unitPrice))
                 {
                     int selectedTeethCount = selectedTeeth.Count;
-                    decimal totalPrice = unitPrice * selectedTeethCount;
-                    txttotal_price.Text = totalPrice.ToString("0.00");
+                    totalPrice += unitPrice * selectedTeethCount;
                 }
-                else
+
+                // محاسبه قیمت Base Fracture
+                decimal baseFracturePrice = 0;
+                if (decimal.TryParse(txtPriceBaseFracture.Text, out baseFracturePrice))
                 {
-                    txttotal_price.Text = "0.00";
+                    // اگر فک بالا انتخاب شده
+                    if (comboBaseFractureTop.SelectedIndex > 0)
+                    {
+                        totalPrice += baseFracturePrice;
+                    }
+                    // اگر فک پایین انتخاب شده
+                    if (comboBaseFractureBottom.SelectedIndex > 0)
+                    {
+                        totalPrice += baseFracturePrice;
+                    }
                 }
+
+                // محاسبه قیمت Soft Layer
+                decimal softLayerPrice = 0;
+                if (decimal.TryParse(txtPriceSoftLayer.Text, out softLayerPrice))
+                {
+                    // اگر فک بالا انتخاب شده
+                    if (chkSoftTop.Checked)
+                    {
+                        totalPrice += softLayerPrice;
+                    }
+                    // اگر فک پایین انتخاب شده
+                    if (chksoftdown.Checked)
+                    {
+                        totalPrice += softLayerPrice;
+                    }
+                }
+
+                // محاسبه قیمت Hard Red Layer
+                decimal hardRedPrice = 0;
+                if (decimal.TryParse(txtPriceHardRedLayer.Text, out hardRedPrice))
+                {
+                    // اگر فک بالا انتخاب شده
+                    if (chkHardRedTop.Checked)
+                    {
+                        totalPrice += hardRedPrice;
+                    }
+                    // اگر فک پایین انتخاب شده
+                    if (chkHardRedDown.Checked)
+                    {
+                        totalPrice += hardRedPrice;
+                    }
+                }
+
+                // محاسبه قیمت Hard Clear Layer
+                decimal hardClearPrice = 0;
+                if (decimal.TryParse(txtPriceHardClearLayer.Text, out hardClearPrice))
+                {
+                    // اگر فک بالا انتخاب شده
+                    if (chkHardClearTop.Checked)
+                    {
+                        totalPrice += hardClearPrice;
+                    }
+                    // اگر فک پایین انتخاب شده
+                    if (chkHardClearDown.Checked)
+                    {
+                        totalPrice += hardClearPrice;
+                    }
+                }
+
+                // محاسبه قیمت Saksion
+                decimal saksionPrice = 0;
+                if (decimal.TryParse(saksionprice.Text, out saksionPrice))
+                {
+                    if (chkSakshen.Checked)
+                    {
+                        totalPrice += saksionPrice;
+                    }
+                }
+
+                txttotal_price.Text = totalPrice.ToString("0.00");
             }
             catch
             {
@@ -464,20 +751,7 @@ namespace denyis
 
         private void chkSelectAllTeeth_CheckedChanged(object sender, EventArgs e)
         {
-            txtSelectedTeeth.Clear();
-
-            foreach (var tooth in toothButtons)
-            {
-                if (chkSelectAllTeeth.Checked)
-                {
-                    tooth.SelectTooth();
-                    txtSelectedTeeth.AppendText(tooth.ToothName + Environment.NewLine);
-                }
-                else
-                {
-                    tooth.DeselectTooth();
-                }
-            }
+            SelectAllTeeth(chkSelectAllTeeth.Checked);
         }
         private void panelHeader_Paint(object sender, PaintEventArgs e)
         {
@@ -529,6 +803,147 @@ namespace denyis
         private void txtunit_price_TextChanged(object sender, EventArgs e)
         {
             CalculateTotalPrice();
+        }
+
+        private void btnAddCheque_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtChequeNumber.Text) || string.IsNullOrEmpty(txtChequeAmount.Text))
+                {
+                    MessageBox.Show("لطفاً شماره چک و مبلغ را وارد کنید", "هشدار",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!decimal.TryParse(txtChequeAmount.Text, out decimal amount))
+                {
+                    MessageBox.Show("لطفاً مبلغ معتبر وارد کنید", "هشدار",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var cheque = new Cheque
+                {
+                    Number = txtChequeNumber.Text.Trim(),
+                    Amount = amount,
+                    Date = dtpChequeDate.Value,
+                    Description = txtPaymentNotes.Text.Trim()
+                };
+
+                cheques.Add(cheque);
+                RefreshChequeDataGridView();
+
+                // پاک کردن فیلدها
+                txtChequeNumber.Clear();
+                txtChequeAmount.Clear();
+                txtPaymentNotes.Clear();
+                dtpChequeDate.Value = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در اضافه کردن چک: {ex.Message}", "خطا",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRemoveCheque_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // بررسی انتخاب ردیف
+                if (dgvCheques.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("لطفاً یک چک را انتخاب کنید", "هشدار", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // حذف چک انتخاب شده
+                int selectedIndex = dgvCheques.SelectedRows[0].Index;
+                if (selectedIndex >= 0 && selectedIndex < cheques.Count)
+                {
+                    cheques.RemoveAt(selectedIndex);
+                    RefreshChequeDataGridView();
+                    MessageBox.Show("چک با موفقیت حذف شد", "موفقیت", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"خطا در حذف چک - Index: {selectedIndex}, Count: {cheques.Count}", "خطا", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در حذف چک: {ex.Message}", "خطا", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AdditionalFeature_CheckedChanged(object sender, EventArgs e)
+        {
+            // Debug: نمایش اطلاعات checkbox
+            if (sender is CheckBox checkBox)
+            {
+                Console.WriteLine($"CheckBox {checkBox.Name} changed to {checkBox.Checked}");
+            }
+            CalculateTotalPrice();
+        }
+
+        private void ComboBaseFracture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        private void PriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+
+
+        private void RefreshChequeDataGridView()
+        {
+            try
+            {
+                dgvCheques.DataSource = null;
+                dgvCheques.DataSource = cheques;
+                
+                // تنظیم نمایش تاریخ به فارسی
+                if (dgvCheques.Columns["Date"] != null)
+                {
+                    dgvCheques.Columns["Date"].DefaultCellStyle.Format = "yyyy/MM/dd";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در به‌روزرسانی جدول چک‌ها: {ex.Message}", "خطا", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetupAdditionalTeethFeatures()
+        {
+            // اضافه کردن event handlers برای checkbox ها
+            chkSoftTop.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chksoftdown.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkHardRedTop.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkHardRedDown.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkHardClearTop.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkHardClearDown.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkSakshen.CheckedChanged += AdditionalFeature_CheckedChanged;
+
+            // اضافه کردن event handlers برای combo box ها
+            comboBaseFractureTop.SelectedIndexChanged += ComboBaseFracture_SelectedIndexChanged;
+            comboBaseFractureBottom.SelectedIndexChanged += ComboBaseFracture_SelectedIndexChanged;
+
+            // اضافه کردن event handlers برای text box های قیمت
+            txtPriceBaseFracture.TextChanged += PriceTextBox_TextChanged;
+            txtPriceSoftLayer.TextChanged += PriceTextBox_TextChanged;
+            txtPriceHardRedLayer.TextChanged += PriceTextBox_TextChanged;
+            txtPriceHardClearLayer.TextChanged += PriceTextBox_TextChanged;
+            saksionprice.TextChanged += PriceTextBox_TextChanged;
         }
 
         private void btnClearForm_Click(object sender, EventArgs e)
@@ -585,18 +1000,36 @@ namespace denyis
                     mysqlManager.AddVisit(visit);
 
                     // 4. ذخیره اطلاعات پرداخت (payments)
-                    decimal totalAmount = 0;
-                    if (decimal.TryParse(txtTotalAmount.Text, out totalAmount))
+                    // ذخیره چک‌ها
+                    string selectedPaymentType = cmbPaymentType.SelectedItem?.ToString() ?? "نقد";
+                    
+                    if (cheques.Count > 0)
                     {
-                        string selectedPaymentType = cmbPaymentType.SelectedItem?.ToString() ?? "نقد";
+                        // ذخیره هر چک به صورت جداگانه
+                        foreach (var cheque in cheques)
+                        {
+                            var payment = new Payment
+                            {
+                                PatientId = patientId,
+                                PaymentType = "چک",
+                                Amount = cheque.Amount,
+                                PaidAt = DateTime.Now,
+                                ChequeNumber = cheque.Number,
+                                ChequeDate = cheque.Date,
+                                Notes = cheque.Description
+                            };
+                            mysqlManager.AddPayment(payment);
+                        }
+                    }
+                    else
+                    {
+                        // اگر چکی نباشد، یک رکورد پرداخت نقدی ذخیره کن
                         var payment = new Payment
                         {
                             PatientId = patientId,
                             PaymentType = selectedPaymentType,
-                            Amount = totalAmount,
+                            Amount = 0,
                             PaidAt = DateTime.Now,
-                            ChequeNumber = txtCheckNumber.Text.Trim(),
-                            ChequeDate = dateTimePicker1dtpCheckDate.Value,
                             Notes = txtPaymentNotes.Text.Trim()
                         };
                         mysqlManager.AddPayment(payment);
@@ -608,16 +1041,75 @@ namespace denyis
                         decimal unitPrice = 0;
                         decimal.TryParse(txtunit_price.Text, out unitPrice);
                         
+                        // محاسبه قیمت کل شامل ویژگی‌های اضافی
+                        decimal totalPrice = unitPrice * selectedTeeth.Count;
+                        
+                        // اضافه کردن قیمت Base Fracture
+                        decimal baseFracturePrice = 0;
+                        if (decimal.TryParse(txtPriceBaseFracture.Text, out baseFracturePrice))
+                        {
+                            if (comboBaseFractureTop.SelectedIndex > 0) totalPrice += baseFracturePrice;
+                            if (comboBaseFractureBottom.SelectedIndex > 0) totalPrice += baseFracturePrice;
+                        }
+                        
+                        // اضافه کردن قیمت Soft Layer
+                        decimal softLayerPrice = 0;
+                        if (decimal.TryParse(txtPriceSoftLayer.Text, out softLayerPrice))
+                        {
+                            if (chkSoftTop.Checked) totalPrice += softLayerPrice;
+                            if (chksoftdown.Checked) totalPrice += softLayerPrice;
+                        }
+                        
+                        // اضافه کردن قیمت Hard Red Layer
+                        decimal hardRedPrice = 0;
+                        if (decimal.TryParse(txtPriceHardRedLayer.Text, out hardRedPrice))
+                        {
+                            if (chkHardRedTop.Checked) totalPrice += hardRedPrice;
+                            if (chkHardRedDown.Checked) totalPrice += hardRedPrice;
+                        }
+                        
+                        // اضافه کردن قیمت Hard Clear Layer
+                        decimal hardClearPrice = 0;
+                        if (decimal.TryParse(txtPriceHardClearLayer.Text, out hardClearPrice))
+                        {
+                            if (chkHardClearTop.Checked) totalPrice += hardClearPrice;
+                            if (chkHardClearDown.Checked) totalPrice += hardClearPrice;
+                        }
+                        
+                        // اضافه کردن قیمت Saksion
+                        decimal saksionPrice = 0;
+                        if (decimal.TryParse(saksionprice.Text, out saksionPrice))
+                        {
+                            if (chkSakshen.Checked)
+                            {
+                                totalPrice += saksionPrice;
+                            }
+                        }
+                        
                         var tooth = new Tooth
                         {
                             PatientId = patientId,
                             ToothName = string.Join(" / ", selectedTeeth),
-                            ToothType = "انتخابی",
+                            ToothType = cmbToothType.SelectedItem?.ToString() ?? "انتخابی",
                             UnitPrice = unitPrice,
-                            TotalPrice = unitPrice * selectedTeeth.Count,
+                            TotalPrice = totalPrice,
                             ToothSize = cmbTeethSize.SelectedItem?.ToString() ?? "متوسط",
                             ToothColor = cmbTeethColor.SelectedItem?.ToString() ?? "A1",
-                            CreatedAt = DateTime.Now
+                            CreatedAt = DateTime.Now,
+                            BaseFractureTop = comboBaseFractureTop.SelectedIndex > 0 ? comboBaseFractureTop.SelectedItem?.ToString() : "",
+                            BaseFractureBottom = comboBaseFractureBottom.SelectedIndex > 0 ? comboBaseFractureBottom.SelectedItem?.ToString() : "",
+                            SoftLayerTop = chkSoftTop.Checked,
+                            SoftLayerBottom = chksoftdown.Checked,
+                            HardRedLayerTop = chkHardRedTop.Checked,
+                            HardRedLayerBottom = chkHardRedDown.Checked,
+                            HardClearLayerTop = chkHardClearTop.Checked,
+                            HardClearLayerBottom = chkHardClearDown.Checked,
+                            Saksion = GetSaksionCheckBoxValue(),
+                            PriceBaseFracture = baseFracturePrice,
+                            PriceSoftLayer = softLayerPrice,
+                            PriceHardRedLayer = hardRedPrice,
+                            PriceHardClearLayer = hardClearPrice,
+                            PriceSaksion = saksionPrice
                         };
                         mysqlManager.AddTooth(tooth);
                     }
@@ -707,6 +1199,18 @@ namespace denyis
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private bool GetSaksionCheckBoxValue()
+        {
+            try
+            {
+                return chkSakshen.Checked;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

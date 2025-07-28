@@ -107,7 +107,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="anbar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anbar.Designer.cs">
+      <DependentUpon>anbar.cs</DependentUpon>
+    </Compile>
     <Compile Include="cases.cs" />
+    <Compile Include="Cheque.cs" />
+    <Compile Include="daramd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="daramd.Designer.cs">
+      <DependentUpon>daramd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +128,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="images.cs" />
+    <Compile Include="InventoryItemcs.cs" />
     <Compile Include="MySqlManager.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientForm.cs.cs">
@@ -137,6 +151,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="visits.cs" />
+    <EmbeddedResource Include="anbar.resx">
+      <DependentUpon>anbar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

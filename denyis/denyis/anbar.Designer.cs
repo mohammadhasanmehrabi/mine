@@ -48,6 +48,7 @@
             this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMinStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToothColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStockStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -252,6 +253,7 @@
             this.colQuantity,
             this.colMinStock,
             this.colUnitPrice,
+            this.colToothColor,
             this.colSupplier,
             this.colPurchaseDate,
             this.colStockStatus,
@@ -318,6 +320,14 @@
             this.colUnitPrice.MinimumWidth = 6;
             this.colUnitPrice.Name = "colUnitPrice";
             this.colUnitPrice.ReadOnly = true;
+            // 
+            // colToothColor
+            // 
+            this.colToothColor.DataPropertyName = "ToothColor";
+            this.colToothColor.HeaderText = "رنگ دندان";
+            this.colToothColor.MinimumWidth = 6;
+            this.colToothColor.Name = "colToothColor";
+            this.colToothColor.ReadOnly = true;
             // 
             // colSupplier
             // 
@@ -744,6 +754,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMinStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToothColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStockStatus;

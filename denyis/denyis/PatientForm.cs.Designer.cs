@@ -32,16 +32,55 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelActions = new System.Windows.Forms.Panel();
+            this.txtPriceHardClearLayer = new System.Windows.Forms.TextBox();
+            this.txtPriceHardRedLayer = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtPriceSoftLayer = new System.Windows.Forms.TextBox();
+            this.txtPriceBaseFracture = new System.Windows.Forms.TextBox();
+            this.saksionprice = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtunit_price = new System.Windows.Forms.TextBox();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.panelTeeth = new System.Windows.Forms.Panel();
+            this.cmbToothType = new System.Windows.Forms.ComboBox();
+            this.chkHardClearTop = new System.Windows.Forms.CheckBox();
+            this.checkHardClearTop = new System.Windows.Forms.CheckBox();
+            this.chkHardClearDown = new System.Windows.Forms.CheckBox();
+            this.checkHardClearBottom = new System.Windows.Forms.CheckBox();
+            this.chkHardRedDown = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkHardRedBottom = new System.Windows.Forms.CheckBox();
+            this.chkHardRedTop = new System.Windows.Forms.CheckBox();
+            this.checkHardRedTop = new System.Windows.Forms.CheckBox();
+            this.chksoftdown = new System.Windows.Forms.CheckBox();
+            this.checkSoftLayerBottom = new System.Windows.Forms.CheckBox();
+            this.chkSoftTop = new System.Windows.Forms.CheckBox();
+            this.checkSoftLayerTop = new System.Windows.Forms.CheckBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBaseFractureTop = new System.Windows.Forms.ComboBox();
+            this.chkSakshen = new System.Windows.Forms.CheckBox();
+            this.comboBaseFractureBottom = new System.Windows.Forms.ComboBox();
+            this.chkSkeshen = new System.Windows.Forms.CheckBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbTeethColor = new System.Windows.Forms.ComboBox();
+            this.cmbTeethSize = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.txttotal_price = new System.Windows.Forms.TextBox();
-            this.txtunit_price = new System.Windows.Forms.TextBox();
-            this.txttooth_type = new System.Windows.Forms.TextBox();
             this.btnLowerCentralLeft = new System.Windows.Forms.Button();
             this.btnLowerLateralLeft = new System.Windows.Forms.Button();
             this.btnLowerCanineLeft = new System.Windows.Forms.Button();
@@ -50,8 +89,6 @@
             this.btnLowerPremolar2Right = new System.Windows.Forms.Button();
             this.btnLowerMolar1Right = new System.Windows.Forms.Button();
             this.btnLowerMolar2Right = new System.Windows.Forms.Button();
-            this.btnLowerWisdomRight = new System.Windows.Forms.Button();
-            this.btnLowerWisdomLeft = new System.Windows.Forms.Button();
             this.btnLowerMolar1Left = new System.Windows.Forms.Button();
             this.btnLowerMolar2Left = new System.Windows.Forms.Button();
             this.btnLowerPremolar1Right = new System.Windows.Forms.Button();
@@ -59,8 +96,6 @@
             this.btnLowerLateralRight = new System.Windows.Forms.Button();
             this.btnLowerCentralRight = new System.Windows.Forms.Button();
             this.btnCentralLeft = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.chkSelectAllTeeth = new System.Windows.Forms.CheckBox();
             this.txtSelectedTeeth = new System.Windows.Forms.TextBox();
             this.btnLateralLeft = new System.Windows.Forms.Button();
@@ -70,8 +105,6 @@
             this.btnPremolar2Right = new System.Windows.Forms.Button();
             this.btnMolar1Right = new System.Windows.Forms.Button();
             this.btnMolar2Right = new System.Windows.Forms.Button();
-            this.btnWisdomRight = new System.Windows.Forms.Button();
-            this.btnWisdomLeft = new System.Windows.Forms.Button();
             this.btnMolar1Left = new System.Windows.Forms.Button();
             this.btnMolar2Left = new System.Windows.Forms.Button();
             this.btnPremolar1Right = new System.Windows.Forms.Button();
@@ -86,15 +119,17 @@
             this.picToothImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.grpPayments = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpChequeDate = new System.Windows.Forms.DateTimePicker();
+            this.txtChequeNumber = new System.Windows.Forms.TextBox();
+            this.txtChequeAmount = new System.Windows.Forms.TextBox();
+            this.btnRemoveCheque = new System.Windows.Forms.Button();
+            this.btnAddCheque = new System.Windows.Forms.Button();
+            this.dgvCheques = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.txtPaymentNotes = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dateTimePicker1dtpCheckDate = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtCheckNumber = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.cmbPaymentType = new System.Windows.Forms.ComboBox();
             this.grptime = new System.Windows.Forms.GroupBox();
             this.dtpFinalTest = new System.Windows.Forms.DateTimePicker();
@@ -128,10 +163,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.cmbTeethSize = new System.Windows.Forms.ComboBox();
-            this.cmbTeethColor = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelActions.SuspendLayout();
@@ -141,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picDoctorSign)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picToothImage)).BeginInit();
             this.grpPayments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).BeginInit();
             this.grptime.SuspendLayout();
             this.grpVisit.SuspendLayout();
             this.grpbimar.SuspendLayout();
@@ -183,22 +215,124 @@
             // 
             this.panelActions.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelActions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelActions.Controls.Add(this.txtPriceHardClearLayer);
+            this.panelActions.Controls.Add(this.txtPriceHardRedLayer);
+            this.panelActions.Controls.Add(this.label32);
+            this.panelActions.Controls.Add(this.label31);
+            this.panelActions.Controls.Add(this.txtPriceSoftLayer);
+            this.panelActions.Controls.Add(this.txtPriceBaseFracture);
+            this.panelActions.Controls.Add(this.saksionprice);
+            this.panelActions.Controls.Add(this.label30);
+            this.panelActions.Controls.Add(this.label29);
+            this.panelActions.Controls.Add(this.label28);
             this.panelActions.Controls.Add(this.btnClearForm);
             this.panelActions.Controls.Add(this.btnSave);
+            this.panelActions.Controls.Add(this.label22);
+            this.panelActions.Controls.Add(this.txtunit_price);
             this.panelActions.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelActions.Location = new System.Drawing.Point(0, 80);
             this.panelActions.Name = "panelActions";
-            this.panelActions.Size = new System.Drawing.Size(141, 725);
+            this.panelActions.Size = new System.Drawing.Size(139, 725);
             this.panelActions.TabIndex = 1;
+            // 
+            // txtPriceHardClearLayer
+            // 
+            this.txtPriceHardClearLayer.Location = new System.Drawing.Point(8, 491);
+            this.txtPriceHardClearLayer.Name = "txtPriceHardClearLayer";
+            this.txtPriceHardClearLayer.Size = new System.Drawing.Size(121, 37);
+            this.txtPriceHardClearLayer.TabIndex = 77;
+            this.txtPriceHardClearLayer.TextChanged += new System.EventHandler(this.PriceTextBox_TextChanged);
+            // 
+            // txtPriceHardRedLayer
+            // 
+            this.txtPriceHardRedLayer.Location = new System.Drawing.Point(8, 404);
+            this.txtPriceHardRedLayer.Name = "txtPriceHardRedLayer";
+            this.txtPriceHardRedLayer.Size = new System.Drawing.Size(121, 37);
+            this.txtPriceHardRedLayer.TabIndex = 76;
+            this.txtPriceHardRedLayer.TextChanged += new System.EventHandler(this.PriceTextBox_TextChanged);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label32.Location = new System.Drawing.Point(6, 459);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(116, 29);
+            this.label32.TabIndex = 69;
+            this.label32.Text = "لایه سخت شفاف";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label31.Location = new System.Drawing.Point(36, 285);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 29);
+            this.label31.TabIndex = 69;
+            this.label31.Text = "لایه نرم";
+            // 
+            // txtPriceSoftLayer
+            // 
+            this.txtPriceSoftLayer.Location = new System.Drawing.Point(8, 329);
+            this.txtPriceSoftLayer.Name = "txtPriceSoftLayer";
+            this.txtPriceSoftLayer.Size = new System.Drawing.Size(121, 37);
+            this.txtPriceSoftLayer.TabIndex = 75;
+            this.txtPriceSoftLayer.TextChanged += new System.EventHandler(this.PriceTextBox_TextChanged);
+            // 
+            // txtPriceBaseFracture
+            // 
+            this.txtPriceBaseFracture.Location = new System.Drawing.Point(8, 238);
+            this.txtPriceBaseFracture.Name = "txtPriceBaseFracture";
+            this.txtPriceBaseFracture.Size = new System.Drawing.Size(121, 37);
+            this.txtPriceBaseFracture.TabIndex = 74;
+            this.txtPriceBaseFracture.TextChanged += new System.EventHandler(this.PriceTextBox_TextChanged);
+            // 
+            // saksionprice
+            // 
+            this.saksionprice.Location = new System.Drawing.Point(8, 161);
+            this.saksionprice.Name = "saksionprice";
+            this.saksionprice.Size = new System.Drawing.Size(121, 37);
+            this.saksionprice.TabIndex = 8;
+            this.saksionprice.TextChanged += new System.EventHandler(this.PriceTextBox_TextChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label30.Location = new System.Drawing.Point(14, 372);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(108, 29);
+            this.label30.TabIndex = 71;
+            this.label30.Text = "لایه سخت قرمز";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label29.Location = new System.Drawing.Point(14, 198);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(96, 29);
+            this.label29.TabIndex = 70;
+            this.label29.Text = "بیس شکسته ";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label28.Location = new System.Drawing.Point(14, 120);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(112, 29);
+            this.label28.TabIndex = 69;
+            this.label28.Text = "قیمت ساکسیون";
             // 
             // btnClearForm
             // 
             this.btnClearForm.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnClearForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearForm.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnClearForm.Location = new System.Drawing.Point(5, 68);
+            this.btnClearForm.Location = new System.Drawing.Point(5, 64);
             this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(132, 40);
+            this.btnClearForm.Size = new System.Drawing.Size(121, 40);
             this.btnClearForm.TabIndex = 3;
             this.btnClearForm.Text = "🧹 پاک کردن فرم";
             this.btnClearForm.UseVisualStyleBackColor = false;
@@ -211,11 +345,28 @@
             this.btnSave.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnSave.Location = new System.Drawing.Point(5, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(132, 40);
+            this.btnSave.Size = new System.Drawing.Size(121, 40);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "💾 ذخیره";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(20, 534);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(102, 29);
+            this.label22.TabIndex = 54;
+            this.label22.Text = "قیمت هر واحد";
+            // 
+            // txtunit_price
+            // 
+            this.txtunit_price.Location = new System.Drawing.Point(8, 566);
+            this.txtunit_price.Name = "txtunit_price";
+            this.txtunit_price.Size = new System.Drawing.Size(123, 37);
+            this.txtunit_price.TabIndex = 51;
+            this.txtunit_price.TextChanged += new System.EventHandler(this.txtunit_price_TextChanged);
             // 
             // panelInfo
             // 
@@ -228,25 +379,48 @@
             this.panelInfo.Controls.Add(this.grpVisit);
             this.panelInfo.Controls.Add(this.grpbimar);
             this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInfo.Location = new System.Drawing.Point(141, 80);
+            this.panelInfo.Location = new System.Drawing.Point(139, 80);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(1397, 725);
+            this.panelInfo.Size = new System.Drawing.Size(1399, 725);
             this.panelInfo.TabIndex = 2;
             // 
             // panelTeeth
             // 
             this.panelTeeth.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelTeeth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTeeth.Controls.Add(this.cmbToothType);
+            this.panelTeeth.Controls.Add(this.chkHardClearTop);
+            this.panelTeeth.Controls.Add(this.checkHardClearTop);
+            this.panelTeeth.Controls.Add(this.chkHardClearDown);
+            this.panelTeeth.Controls.Add(this.checkHardClearBottom);
+            this.panelTeeth.Controls.Add(this.chkHardRedDown);
+            this.panelTeeth.Controls.Add(this.checkBox2);
+            this.panelTeeth.Controls.Add(this.checkHardRedBottom);
+            this.panelTeeth.Controls.Add(this.chkHardRedTop);
+            this.panelTeeth.Controls.Add(this.checkHardRedTop);
+            this.panelTeeth.Controls.Add(this.chksoftdown);
+            this.panelTeeth.Controls.Add(this.checkSoftLayerBottom);
+            this.panelTeeth.Controls.Add(this.chkSoftTop);
+            this.panelTeeth.Controls.Add(this.checkSoftLayerTop);
+            this.panelTeeth.Controls.Add(this.label35);
+            this.panelTeeth.Controls.Add(this.label27);
+            this.panelTeeth.Controls.Add(this.label34);
+            this.panelTeeth.Controls.Add(this.label26);
+            this.panelTeeth.Controls.Add(this.label33);
+            this.panelTeeth.Controls.Add(this.label20);
+            this.panelTeeth.Controls.Add(this.label15);
+            this.panelTeeth.Controls.Add(this.label19);
+            this.panelTeeth.Controls.Add(this.comboBaseFractureTop);
+            this.panelTeeth.Controls.Add(this.chkSakshen);
+            this.panelTeeth.Controls.Add(this.comboBaseFractureBottom);
+            this.panelTeeth.Controls.Add(this.chkSkeshen);
             this.panelTeeth.Controls.Add(this.label25);
             this.panelTeeth.Controls.Add(this.label24);
             this.panelTeeth.Controls.Add(this.cmbTeethColor);
             this.panelTeeth.Controls.Add(this.cmbTeethSize);
             this.panelTeeth.Controls.Add(this.label23);
-            this.panelTeeth.Controls.Add(this.label22);
             this.panelTeeth.Controls.Add(this.label21);
             this.panelTeeth.Controls.Add(this.txttotal_price);
-            this.panelTeeth.Controls.Add(this.txtunit_price);
-            this.panelTeeth.Controls.Add(this.txttooth_type);
             this.panelTeeth.Controls.Add(this.btnLowerCentralLeft);
             this.panelTeeth.Controls.Add(this.btnLowerLateralLeft);
             this.panelTeeth.Controls.Add(this.btnLowerCanineLeft);
@@ -255,8 +429,6 @@
             this.panelTeeth.Controls.Add(this.btnLowerPremolar2Right);
             this.panelTeeth.Controls.Add(this.btnLowerMolar1Right);
             this.panelTeeth.Controls.Add(this.btnLowerMolar2Right);
-            this.panelTeeth.Controls.Add(this.btnLowerWisdomRight);
-            this.panelTeeth.Controls.Add(this.btnLowerWisdomLeft);
             this.panelTeeth.Controls.Add(this.btnLowerMolar1Left);
             this.panelTeeth.Controls.Add(this.btnLowerMolar2Left);
             this.panelTeeth.Controls.Add(this.btnLowerPremolar1Right);
@@ -264,8 +436,6 @@
             this.panelTeeth.Controls.Add(this.btnLowerLateralRight);
             this.panelTeeth.Controls.Add(this.btnLowerCentralRight);
             this.panelTeeth.Controls.Add(this.btnCentralLeft);
-            this.panelTeeth.Controls.Add(this.label20);
-            this.panelTeeth.Controls.Add(this.label19);
             this.panelTeeth.Controls.Add(this.chkSelectAllTeeth);
             this.panelTeeth.Controls.Add(this.txtSelectedTeeth);
             this.panelTeeth.Controls.Add(this.btnLateralLeft);
@@ -275,8 +445,6 @@
             this.panelTeeth.Controls.Add(this.btnPremolar2Right);
             this.panelTeeth.Controls.Add(this.btnMolar1Right);
             this.panelTeeth.Controls.Add(this.btnMolar2Right);
-            this.panelTeeth.Controls.Add(this.btnWisdomRight);
-            this.panelTeeth.Controls.Add(this.btnWisdomLeft);
             this.panelTeeth.Controls.Add(this.btnMolar1Left);
             this.panelTeeth.Controls.Add(this.btnMolar2Left);
             this.panelTeeth.Controls.Add(this.btnPremolar1Right);
@@ -289,28 +457,383 @@
             this.panelTeeth.TabIndex = 13;
             this.panelTeeth.Click += new System.EventHandler(this.ToothButton_Click);
             // 
+            // cmbToothType
+            // 
+            this.cmbToothType.FormattingEnabled = true;
+            this.cmbToothType.Location = new System.Drawing.Point(907, 281);
+            this.cmbToothType.Name = "cmbToothType";
+            this.cmbToothType.Size = new System.Drawing.Size(173, 37);
+            this.cmbToothType.TabIndex = 69;
+            // 
+            // chkHardClearTop
+            // 
+            this.chkHardClearTop.AutoSize = true;
+            this.chkHardClearTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkHardClearTop.Location = new System.Drawing.Point(1192, 212);
+            this.chkHardClearTop.Name = "chkHardClearTop";
+            this.chkHardClearTop.Size = new System.Drawing.Size(56, 33);
+            this.chkHardClearTop.TabIndex = 68;
+            this.chkHardClearTop.Text = "بالا";
+            this.chkHardClearTop.UseVisualStyleBackColor = true;
+            this.chkHardClearTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkHardClearTop
+            // 
+            this.checkHardClearTop.AutoSize = true;
+            this.checkHardClearTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkHardClearTop.Location = new System.Drawing.Point(1189, 208);
+            this.checkHardClearTop.Name = "checkHardClearTop";
+            this.checkHardClearTop.Size = new System.Drawing.Size(56, 33);
+            this.checkHardClearTop.TabIndex = 68;
+            this.checkHardClearTop.Text = "بالا";
+            this.checkHardClearTop.UseVisualStyleBackColor = true;
+            this.checkHardClearTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // chkHardClearDown
+            // 
+            this.chkHardClearDown.AutoSize = true;
+            this.chkHardClearDown.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkHardClearDown.Location = new System.Drawing.Point(1115, 212);
+            this.chkHardClearDown.Name = "chkHardClearDown";
+            this.chkHardClearDown.Size = new System.Drawing.Size(71, 33);
+            this.chkHardClearDown.TabIndex = 67;
+            this.chkHardClearDown.Text = "پایین";
+            this.chkHardClearDown.UseVisualStyleBackColor = true;
+            this.chkHardClearDown.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkHardClearBottom
+            // 
+            this.checkHardClearBottom.AutoSize = true;
+            this.checkHardClearBottom.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkHardClearBottom.Location = new System.Drawing.Point(1112, 208);
+            this.checkHardClearBottom.Name = "checkHardClearBottom";
+            this.checkHardClearBottom.Size = new System.Drawing.Size(71, 33);
+            this.checkHardClearBottom.TabIndex = 67;
+            this.checkHardClearBottom.Text = "پایین";
+            this.checkHardClearBottom.UseVisualStyleBackColor = true;
+            this.checkHardClearBottom.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // chkHardRedDown
+            // 
+            this.chkHardRedDown.AutoSize = true;
+            this.chkHardRedDown.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkHardRedDown.Location = new System.Drawing.Point(1120, 247);
+            this.chkHardRedDown.Name = "chkHardRedDown";
+            this.chkHardRedDown.Size = new System.Drawing.Size(71, 33);
+            this.chkHardRedDown.TabIndex = 66;
+            this.chkHardRedDown.Text = "پایین";
+            this.chkHardRedDown.UseVisualStyleBackColor = true;
+            this.chkHardRedDown.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox2.Location = new System.Drawing.Point(1117, 243);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(71, 33);
+            this.checkBox2.TabIndex = 66;
+            this.checkBox2.Text = "پایین";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkHardRedBottom
+            // 
+            this.checkHardRedBottom.AutoSize = true;
+            this.checkHardRedBottom.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkHardRedBottom.Location = new System.Drawing.Point(1112, 243);
+            this.checkHardRedBottom.Name = "checkHardRedBottom";
+            this.checkHardRedBottom.Size = new System.Drawing.Size(71, 33);
+            this.checkHardRedBottom.TabIndex = 66;
+            this.checkHardRedBottom.Text = "پایین";
+            this.checkHardRedBottom.UseVisualStyleBackColor = true;
+            this.checkHardRedBottom.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // chkHardRedTop
+            // 
+            this.chkHardRedTop.AutoSize = true;
+            this.chkHardRedTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkHardRedTop.Location = new System.Drawing.Point(1188, 244);
+            this.chkHardRedTop.Name = "chkHardRedTop";
+            this.chkHardRedTop.Size = new System.Drawing.Size(56, 33);
+            this.chkHardRedTop.TabIndex = 65;
+            this.chkHardRedTop.Text = "بالا";
+            this.chkHardRedTop.UseVisualStyleBackColor = true;
+            this.chkHardRedTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkHardRedTop
+            // 
+            this.checkHardRedTop.AutoSize = true;
+            this.checkHardRedTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkHardRedTop.Location = new System.Drawing.Point(1185, 240);
+            this.checkHardRedTop.Name = "checkHardRedTop";
+            this.checkHardRedTop.Size = new System.Drawing.Size(56, 33);
+            this.checkHardRedTop.TabIndex = 65;
+            this.checkHardRedTop.Text = "بالا";
+            this.checkHardRedTop.UseVisualStyleBackColor = true;
+            this.checkHardRedTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // chksoftdown
+            // 
+            this.chksoftdown.AutoSize = true;
+            this.chksoftdown.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chksoftdown.Location = new System.Drawing.Point(1173, 181);
+            this.chksoftdown.Name = "chksoftdown";
+            this.chksoftdown.Size = new System.Drawing.Size(71, 33);
+            this.chksoftdown.TabIndex = 64;
+            this.chksoftdown.Text = "پایین";
+            this.chksoftdown.UseVisualStyleBackColor = true;
+            this.chksoftdown.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkSoftLayerBottom
+            // 
+            this.checkSoftLayerBottom.AutoSize = true;
+            this.checkSoftLayerBottom.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkSoftLayerBottom.Location = new System.Drawing.Point(1170, 177);
+            this.checkSoftLayerBottom.Name = "checkSoftLayerBottom";
+            this.checkSoftLayerBottom.Size = new System.Drawing.Size(71, 33);
+            this.checkSoftLayerBottom.TabIndex = 64;
+            this.checkSoftLayerBottom.Text = "پایین";
+            this.checkSoftLayerBottom.UseVisualStyleBackColor = true;
+            this.checkSoftLayerBottom.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // chkSoftTop
+            // 
+            this.chkSoftTop.AutoSize = true;
+            this.chkSoftTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkSoftTop.Location = new System.Drawing.Point(1254, 180);
+            this.chkSoftTop.Name = "chkSoftTop";
+            this.chkSoftTop.Size = new System.Drawing.Size(56, 33);
+            this.chkSoftTop.TabIndex = 63;
+            this.chkSoftTop.Text = "بالا";
+            this.chkSoftTop.UseVisualStyleBackColor = true;
+            this.chkSoftTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // checkSoftLayerTop
+            // 
+            this.checkSoftLayerTop.AutoSize = true;
+            this.checkSoftLayerTop.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkSoftLayerTop.Location = new System.Drawing.Point(1251, 176);
+            this.checkSoftLayerTop.Name = "checkSoftLayerTop";
+            this.checkSoftLayerTop.Size = new System.Drawing.Size(56, 33);
+            this.checkSoftLayerTop.TabIndex = 63;
+            this.checkSoftLayerTop.Text = "بالا";
+            this.checkSoftLayerTop.UseVisualStyleBackColor = true;
+            this.checkSoftLayerTop.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label35.Location = new System.Drawing.Point(1262, 213);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(116, 29);
+            this.label35.TabIndex = 62;
+            this.label35.Text = "لایه سخت شفاف";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label27.Location = new System.Drawing.Point(1259, 209);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(116, 29);
+            this.label27.TabIndex = 62;
+            this.label27.Text = "لایه سخت شفاف";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label34.Location = new System.Drawing.Point(1270, 242);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(108, 29);
+            this.label34.TabIndex = 61;
+            this.label34.Text = "لایه سخت قرمز";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label26.Location = new System.Drawing.Point(1267, 238);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(108, 29);
+            this.label26.TabIndex = 61;
+            this.label26.Text = "لایه سخت قرمز";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label33.Location = new System.Drawing.Point(1316, 181);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 29);
+            this.label33.TabIndex = 60;
+            this.label33.Text = "لایه نرم";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label20.Location = new System.Drawing.Point(1313, 177);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(59, 29);
+            this.label20.TabIndex = 60;
+            this.label20.Text = "لایه نرم";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label15.Location = new System.Drawing.Point(1189, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(141, 29);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "بیس شکسته فک بالا";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label19.Location = new System.Drawing.Point(1176, 105);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(154, 29);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "بیس شکسته فک پایین";
+            // 
+            // comboBaseFractureTop
+            // 
+            this.comboBaseFractureTop.FormattingEnabled = true;
+            this.comboBaseFractureTop.Items.AddRange(new object[] {
+            "هیچ سیمی نمیاد",
+            "یک سیم نازک فک بالا",
+            "یک سیم متوسط فک بالا",
+            "یک سیم ضحیم فک بالا",
+            "دو سیم نازک فک بالا",
+            "دو سیم متوسط فک بالا",
+            "دو سیم ضحیم فک بالا",
+            "سه سیم نازک فک بالا",
+            "سه سیم متوسط فک بالا",
+            "سه سیم ضحیم فک بالا"});
+            this.comboBaseFractureTop.Location = new System.Drawing.Point(1190, 46);
+            this.comboBaseFractureTop.Name = "comboBaseFractureTop";
+            this.comboBaseFractureTop.Size = new System.Drawing.Size(135, 37);
+            this.comboBaseFractureTop.TabIndex = 12;
+            this.comboBaseFractureTop.SelectedIndexChanged += new System.EventHandler(this.ComboBaseFracture_SelectedIndexChanged);
+            // 
+            // chkSakshen
+            // 
+            this.chkSakshen.AutoSize = true;
+            this.chkSakshen.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkSakshen.Location = new System.Drawing.Point(1212, 310);
+            this.chkSakshen.Name = "chkSakshen";
+            this.chkSakshen.Size = new System.Drawing.Size(166, 33);
+            this.chkSakshen.TabIndex = 59;
+            this.chkSakshen.Text = "ساکسیون(ساکشن)";
+            this.chkSakshen.UseVisualStyleBackColor = true;
+            this.chkSakshen.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // comboBaseFractureBottom
+            // 
+            this.comboBaseFractureBottom.FormattingEnabled = true;
+            this.comboBaseFractureBottom.Items.AddRange(new object[] {
+            "هیچ سیمی نمیاد",
+            "یک سیم نازک فک پایین",
+            "یک سیم متوسط فک پایین",
+            "یک سیم ضحیم فک پایین",
+            "دو سیم نازک فک پایین",
+            "دو سیم متوسط فک پایین",
+            "دو سیم ضحیم فک پایین",
+            "سه سیم نازک فک پاینن",
+            "سه سیم متوسط فک پایین",
+            "سه سیم ضحیم فک پایین"});
+            this.comboBaseFractureBottom.Location = new System.Drawing.Point(1190, 137);
+            this.comboBaseFractureBottom.Name = "comboBaseFractureBottom";
+            this.comboBaseFractureBottom.Size = new System.Drawing.Size(135, 37);
+            this.comboBaseFractureBottom.TabIndex = 13;
+            this.comboBaseFractureBottom.SelectedIndexChanged += new System.EventHandler(this.ComboBaseFracture_SelectedIndexChanged);
+            // 
+            // chkSkeshen
+            // 
+            this.chkSkeshen.AutoSize = true;
+            this.chkSkeshen.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkSkeshen.Location = new System.Drawing.Point(1209, 306);
+            this.chkSkeshen.Name = "chkSkeshen";
+            this.chkSkeshen.Size = new System.Drawing.Size(166, 33);
+            this.chkSkeshen.TabIndex = 59;
+            this.chkSkeshen.Text = "ساکسیون(ساکشن)";
+            this.chkSkeshen.UseVisualStyleBackColor = true;
+            this.chkSkeshen.CheckedChanged += new System.EventHandler(this.AdditionalFeature_CheckedChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(318, 284);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(81, 29);
+            this.label25.TabIndex = 58;
+            this.label25.Text = "زنگ دندون";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(564, 285);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(82, 29);
+            this.label24.TabIndex = 57;
+            this.label24.Text = "سایز دندون";
+            // 
+            // cmbTeethColor
+            // 
+            this.cmbTeethColor.FormattingEnabled = true;
+            this.cmbTeethColor.Items.AddRange(new object[] {
+            "A1",
+            "A2",
+            "A3",
+            "A3",
+            "A3.5",
+            "A4",
+            "B1",
+            "B2",
+            "B3",
+            "B4",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "D2",
+            "D3",
+            "D4"});
+            this.cmbTeethColor.Location = new System.Drawing.Point(137, 281);
+            this.cmbTeethColor.Name = "cmbTeethColor";
+            this.cmbTeethColor.Size = new System.Drawing.Size(175, 37);
+            this.cmbTeethColor.TabIndex = 56;
+            // 
+            // cmbTeethSize
+            // 
+            this.cmbTeethSize.FormattingEnabled = true;
+            this.cmbTeethSize.Items.AddRange(new object[] {
+            "کوچک ",
+            "متوسط ",
+            "بزرگ"});
+            this.cmbTeethSize.Location = new System.Drawing.Point(405, 281);
+            this.cmbTeethSize.Name = "cmbTeethSize";
+            this.cmbTeethSize.Size = new System.Drawing.Size(153, 37);
+            this.cmbTeethSize.TabIndex = 12;
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(696, 282);
+            this.label23.Location = new System.Drawing.Point(837, 290);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(72, 29);
             this.label23.TabIndex = 55;
             this.label23.Text = "قیمت کل";
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(892, 283);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(102, 29);
-            this.label22.TabIndex = 54;
-            this.label22.Text = "قیمت هر واحد";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1119, 278);
+            this.label21.Location = new System.Drawing.Point(1086, 290);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(77, 29);
             this.label21.TabIndex = 53;
@@ -318,30 +841,15 @@
             // 
             // txttotal_price
             // 
-            this.txttotal_price.Location = new System.Drawing.Point(523, 278);
+            this.txttotal_price.Location = new System.Drawing.Point(664, 281);
             this.txttotal_price.Name = "txttotal_price";
             this.txttotal_price.Size = new System.Drawing.Size(167, 37);
             this.txttotal_price.TabIndex = 52;
             // 
-            // txtunit_price
-            // 
-            this.txtunit_price.Location = new System.Drawing.Point(774, 278);
-            this.txtunit_price.Name = "txtunit_price";
-            this.txtunit_price.Size = new System.Drawing.Size(112, 37);
-            this.txtunit_price.TabIndex = 51;
-            this.txtunit_price.TextChanged += new System.EventHandler(this.txtunit_price_TextChanged);
-            // 
-            // txttooth_type
-            // 
-            this.txttooth_type.Location = new System.Drawing.Point(997, 278);
-            this.txttooth_type.Name = "txttooth_type";
-            this.txttooth_type.Size = new System.Drawing.Size(116, 37);
-            this.txttooth_type.TabIndex = 50;
-            // 
             // btnLowerCentralLeft
             // 
             this.btnLowerCentralLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerCentralLeft.Location = new System.Drawing.Point(13, 105);
+            this.btnLowerCentralLeft.Location = new System.Drawing.Point(499, 105);
             this.btnLowerCentralLeft.Name = "btnLowerCentralLeft";
             this.btnLowerCentralLeft.Size = new System.Drawing.Size(75, 85);
             this.btnLowerCentralLeft.TabIndex = 49;
@@ -353,7 +861,7 @@
             // btnLowerLateralLeft
             // 
             this.btnLowerLateralLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerLateralLeft.Location = new System.Drawing.Point(94, 105);
+            this.btnLowerLateralLeft.Location = new System.Drawing.Point(418, 105);
             this.btnLowerLateralLeft.Name = "btnLowerLateralLeft";
             this.btnLowerLateralLeft.Size = new System.Drawing.Size(75, 85);
             this.btnLowerLateralLeft.TabIndex = 48;
@@ -365,7 +873,7 @@
             // btnLowerCanineLeft
             // 
             this.btnLowerCanineLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerCanineLeft.Location = new System.Drawing.Point(175, 105);
+            this.btnLowerCanineLeft.Location = new System.Drawing.Point(337, 105);
             this.btnLowerCanineLeft.Name = "btnLowerCanineLeft";
             this.btnLowerCanineLeft.Size = new System.Drawing.Size(75, 85);
             this.btnLowerCanineLeft.TabIndex = 47;
@@ -377,7 +885,7 @@
             // btnLowerPremolar2Left
             // 
             this.btnLowerPremolar2Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerPremolar2Left.Location = new System.Drawing.Point(256, 105);
+            this.btnLowerPremolar2Left.Location = new System.Drawing.Point(175, 105);
             this.btnLowerPremolar2Left.Name = "btnLowerPremolar2Left";
             this.btnLowerPremolar2Left.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar2Left.TabIndex = 46;
@@ -389,7 +897,7 @@
             // btnLowerPremolar1Left
             // 
             this.btnLowerPremolar1Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerPremolar1Left.Location = new System.Drawing.Point(337, 105);
+            this.btnLowerPremolar1Left.Location = new System.Drawing.Point(259, 105);
             this.btnLowerPremolar1Left.Name = "btnLowerPremolar1Left";
             this.btnLowerPremolar1Left.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar1Left.TabIndex = 45;
@@ -413,7 +921,7 @@
             // btnLowerMolar1Right
             // 
             this.btnLowerMolar1Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerMolar1Right.Location = new System.Drawing.Point(823, 105);
+            this.btnLowerMolar1Right.Location = new System.Drawing.Point(985, 105);
             this.btnLowerMolar1Right.Name = "btnLowerMolar1Right";
             this.btnLowerMolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerMolar1Right.TabIndex = 43;
@@ -425,7 +933,7 @@
             // btnLowerMolar2Right
             // 
             this.btnLowerMolar2Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerMolar2Right.Location = new System.Drawing.Point(742, 105);
+            this.btnLowerMolar2Right.Location = new System.Drawing.Point(1066, 105);
             this.btnLowerMolar2Right.Name = "btnLowerMolar2Right";
             this.btnLowerMolar2Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerMolar2Right.TabIndex = 42;
@@ -434,34 +942,10 @@
             this.btnLowerMolar2Right.UseVisualStyleBackColor = true;
             this.btnLowerMolar2Right.Click += new System.EventHandler(this.ToothButton_Click);
             // 
-            // btnLowerWisdomRight
-            // 
-            this.btnLowerWisdomRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerWisdomRight.Location = new System.Drawing.Point(661, 105);
-            this.btnLowerWisdomRight.Name = "btnLowerWisdomRight";
-            this.btnLowerWisdomRight.Size = new System.Drawing.Size(75, 85);
-            this.btnLowerWisdomRight.TabIndex = 41;
-            this.btnLowerWisdomRight.Tag = "فک پایین - عقل راست";
-            this.btnLowerWisdomRight.Text = "عقل راست";
-            this.btnLowerWisdomRight.UseVisualStyleBackColor = true;
-            this.btnLowerWisdomRight.Click += new System.EventHandler(this.ToothButton_Click);
-            // 
-            // btnLowerWisdomLeft
-            // 
-            this.btnLowerWisdomLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerWisdomLeft.Location = new System.Drawing.Point(580, 105);
-            this.btnLowerWisdomLeft.Name = "btnLowerWisdomLeft";
-            this.btnLowerWisdomLeft.Size = new System.Drawing.Size(75, 85);
-            this.btnLowerWisdomLeft.TabIndex = 40;
-            this.btnLowerWisdomLeft.Tag = "فک پایین - عقل چپ";
-            this.btnLowerWisdomLeft.Text = "عقل چپ\t";
-            this.btnLowerWisdomLeft.UseVisualStyleBackColor = true;
-            this.btnLowerWisdomLeft.Click += new System.EventHandler(this.ToothButton_Click);
-            // 
             // btnLowerMolar1Left
             // 
             this.btnLowerMolar1Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerMolar1Left.Location = new System.Drawing.Point(499, 105);
+            this.btnLowerMolar1Left.Location = new System.Drawing.Point(94, 105);
             this.btnLowerMolar1Left.Name = "btnLowerMolar1Left";
             this.btnLowerMolar1Left.Size = new System.Drawing.Size(75, 85);
             this.btnLowerMolar1Left.TabIndex = 39;
@@ -473,7 +957,7 @@
             // btnLowerMolar2Left
             // 
             this.btnLowerMolar2Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerMolar2Left.Location = new System.Drawing.Point(418, 105);
+            this.btnLowerMolar2Left.Location = new System.Drawing.Point(13, 105);
             this.btnLowerMolar2Left.Name = "btnLowerMolar2Left";
             this.btnLowerMolar2Left.Size = new System.Drawing.Size(75, 85);
             this.btnLowerMolar2Left.TabIndex = 38;
@@ -485,7 +969,7 @@
             // btnLowerPremolar1Right
             // 
             this.btnLowerPremolar1Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerPremolar1Right.Location = new System.Drawing.Point(984, 105);
+            this.btnLowerPremolar1Right.Location = new System.Drawing.Point(823, 105);
             this.btnLowerPremolar1Right.Name = "btnLowerPremolar1Right";
             this.btnLowerPremolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar1Right.TabIndex = 37;
@@ -497,7 +981,7 @@
             // btnLowerCanineRight
             // 
             this.btnLowerCanineRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerCanineRight.Location = new System.Drawing.Point(1065, 105);
+            this.btnLowerCanineRight.Location = new System.Drawing.Point(742, 105);
             this.btnLowerCanineRight.Name = "btnLowerCanineRight";
             this.btnLowerCanineRight.Size = new System.Drawing.Size(75, 85);
             this.btnLowerCanineRight.TabIndex = 36;
@@ -509,7 +993,7 @@
             // btnLowerLateralRight
             // 
             this.btnLowerLateralRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerLateralRight.Location = new System.Drawing.Point(1146, 105);
+            this.btnLowerLateralRight.Location = new System.Drawing.Point(661, 105);
             this.btnLowerLateralRight.Name = "btnLowerLateralRight";
             this.btnLowerLateralRight.Size = new System.Drawing.Size(75, 85);
             this.btnLowerLateralRight.TabIndex = 35;
@@ -521,7 +1005,7 @@
             // btnLowerCentralRight
             // 
             this.btnLowerCentralRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLowerCentralRight.Location = new System.Drawing.Point(1227, 105);
+            this.btnLowerCentralRight.Location = new System.Drawing.Point(580, 105);
             this.btnLowerCentralRight.Name = "btnLowerCentralRight";
             this.btnLowerCentralRight.Size = new System.Drawing.Size(75, 85);
             this.btnLowerCentralRight.TabIndex = 34;
@@ -533,7 +1017,7 @@
             // btnCentralLeft
             // 
             this.btnCentralLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCentralLeft.Location = new System.Drawing.Point(13, 14);
+            this.btnCentralLeft.Location = new System.Drawing.Point(499, 14);
             this.btnCentralLeft.Name = "btnCentralLeft";
             this.btnCentralLeft.Size = new System.Drawing.Size(75, 85);
             this.btnCentralLeft.TabIndex = 33;
@@ -542,29 +1026,11 @@
             this.btnCentralLeft.UseVisualStyleBackColor = true;
             this.btnCentralLeft.Click += new System.EventHandler(this.ToothButton_Click);
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1304, 91);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(71, 29);
-            this.label20.TabIndex = 32;
-            this.label20.Text = "فک پایین";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1308, 14);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(58, 29);
-            this.label19.TabIndex = 31;
-            this.label19.Text = "فک بالا";
-            // 
             // chkSelectAllTeeth
             // 
             this.chkSelectAllTeeth.AutoSize = true;
             this.chkSelectAllTeeth.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.chkSelectAllTeeth.Location = new System.Drawing.Point(1193, 278);
+            this.chkSelectAllTeeth.Location = new System.Drawing.Point(1193, 273);
             this.chkSelectAllTeeth.Name = "chkSelectAllTeeth";
             this.chkSelectAllTeeth.Size = new System.Drawing.Size(177, 33);
             this.chkSelectAllTeeth.TabIndex = 30;
@@ -578,13 +1044,13 @@
             this.txtSelectedTeeth.Multiline = true;
             this.txtSelectedTeeth.Name = "txtSelectedTeeth";
             this.txtSelectedTeeth.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSelectedTeeth.Size = new System.Drawing.Size(1296, 80);
+            this.txtSelectedTeeth.Size = new System.Drawing.Size(1100, 80);
             this.txtSelectedTeeth.TabIndex = 16;
             // 
             // btnLateralLeft
             // 
             this.btnLateralLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLateralLeft.Location = new System.Drawing.Point(94, 14);
+            this.btnLateralLeft.Location = new System.Drawing.Point(418, 14);
             this.btnLateralLeft.Name = "btnLateralLeft";
             this.btnLateralLeft.Size = new System.Drawing.Size(75, 85);
             this.btnLateralLeft.TabIndex = 14;
@@ -596,7 +1062,7 @@
             // btnCanineLeft
             // 
             this.btnCanineLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCanineLeft.Location = new System.Drawing.Point(175, 14);
+            this.btnCanineLeft.Location = new System.Drawing.Point(337, 14);
             this.btnCanineLeft.Name = "btnCanineLeft";
             this.btnCanineLeft.Size = new System.Drawing.Size(75, 85);
             this.btnCanineLeft.TabIndex = 13;
@@ -608,7 +1074,7 @@
             // btnPremolar2Left
             // 
             this.btnPremolar2Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPremolar2Left.Location = new System.Drawing.Point(256, 14);
+            this.btnPremolar2Left.Location = new System.Drawing.Point(175, 14);
             this.btnPremolar2Left.Name = "btnPremolar2Left";
             this.btnPremolar2Left.Size = new System.Drawing.Size(75, 85);
             this.btnPremolar2Left.TabIndex = 12;
@@ -620,7 +1086,7 @@
             // btnPremolar1Left
             // 
             this.btnPremolar1Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPremolar1Left.Location = new System.Drawing.Point(337, 14);
+            this.btnPremolar1Left.Location = new System.Drawing.Point(259, 14);
             this.btnPremolar1Left.Name = "btnPremolar1Left";
             this.btnPremolar1Left.Size = new System.Drawing.Size(75, 85);
             this.btnPremolar1Left.TabIndex = 11;
@@ -644,7 +1110,7 @@
             // btnMolar1Right
             // 
             this.btnMolar1Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMolar1Right.Location = new System.Drawing.Point(823, 14);
+            this.btnMolar1Right.Location = new System.Drawing.Point(985, 14);
             this.btnMolar1Right.Name = "btnMolar1Right";
             this.btnMolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnMolar1Right.TabIndex = 9;
@@ -656,7 +1122,7 @@
             // btnMolar2Right
             // 
             this.btnMolar2Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMolar2Right.Location = new System.Drawing.Point(742, 14);
+            this.btnMolar2Right.Location = new System.Drawing.Point(1066, 14);
             this.btnMolar2Right.Name = "btnMolar2Right";
             this.btnMolar2Right.Size = new System.Drawing.Size(75, 85);
             this.btnMolar2Right.TabIndex = 8;
@@ -665,34 +1131,10 @@
             this.btnMolar2Right.UseVisualStyleBackColor = true;
             this.btnMolar2Right.Click += new System.EventHandler(this.ToothButton_Click);
             // 
-            // btnWisdomRight
-            // 
-            this.btnWisdomRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWisdomRight.Location = new System.Drawing.Point(661, 14);
-            this.btnWisdomRight.Name = "btnWisdomRight";
-            this.btnWisdomRight.Size = new System.Drawing.Size(75, 85);
-            this.btnWisdomRight.TabIndex = 7;
-            this.btnWisdomRight.Tag = "فک بالا - عقل راست";
-            this.btnWisdomRight.Text = "عقل راست";
-            this.btnWisdomRight.UseVisualStyleBackColor = true;
-            this.btnWisdomRight.Click += new System.EventHandler(this.ToothButton_Click);
-            // 
-            // btnWisdomLeft
-            // 
-            this.btnWisdomLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWisdomLeft.Location = new System.Drawing.Point(580, 14);
-            this.btnWisdomLeft.Name = "btnWisdomLeft";
-            this.btnWisdomLeft.Size = new System.Drawing.Size(75, 85);
-            this.btnWisdomLeft.TabIndex = 6;
-            this.btnWisdomLeft.Tag = "فک بالا - عقل چپ";
-            this.btnWisdomLeft.Text = "عقل چپ\t";
-            this.btnWisdomLeft.UseVisualStyleBackColor = true;
-            this.btnWisdomLeft.Click += new System.EventHandler(this.ToothButton_Click);
-            // 
             // btnMolar1Left
             // 
             this.btnMolar1Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMolar1Left.Location = new System.Drawing.Point(499, 14);
+            this.btnMolar1Left.Location = new System.Drawing.Point(94, 14);
             this.btnMolar1Left.Name = "btnMolar1Left";
             this.btnMolar1Left.Size = new System.Drawing.Size(75, 85);
             this.btnMolar1Left.TabIndex = 5;
@@ -704,7 +1146,7 @@
             // btnMolar2Left
             // 
             this.btnMolar2Left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMolar2Left.Location = new System.Drawing.Point(418, 14);
+            this.btnMolar2Left.Location = new System.Drawing.Point(13, 14);
             this.btnMolar2Left.Name = "btnMolar2Left";
             this.btnMolar2Left.Size = new System.Drawing.Size(75, 85);
             this.btnMolar2Left.TabIndex = 4;
@@ -716,7 +1158,7 @@
             // btnPremolar1Right
             // 
             this.btnPremolar1Right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPremolar1Right.Location = new System.Drawing.Point(984, 14);
+            this.btnPremolar1Right.Location = new System.Drawing.Point(823, 14);
             this.btnPremolar1Right.Name = "btnPremolar1Right";
             this.btnPremolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnPremolar1Right.TabIndex = 3;
@@ -728,7 +1170,7 @@
             // btnCanineRight
             // 
             this.btnCanineRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCanineRight.Location = new System.Drawing.Point(1065, 14);
+            this.btnCanineRight.Location = new System.Drawing.Point(742, 14);
             this.btnCanineRight.Name = "btnCanineRight";
             this.btnCanineRight.Size = new System.Drawing.Size(75, 85);
             this.btnCanineRight.TabIndex = 2;
@@ -740,7 +1182,7 @@
             // btnLateralRight
             // 
             this.btnLateralRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLateralRight.Location = new System.Drawing.Point(1146, 14);
+            this.btnLateralRight.Location = new System.Drawing.Point(661, 14);
             this.btnLateralRight.Name = "btnLateralRight";
             this.btnLateralRight.Size = new System.Drawing.Size(75, 85);
             this.btnLateralRight.TabIndex = 1;
@@ -752,7 +1194,7 @@
             // btnCentralRight
             // 
             this.btnCentralRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCentralRight.Location = new System.Drawing.Point(1227, 14);
+            this.btnCentralRight.Location = new System.Drawing.Point(580, 14);
             this.btnCentralRight.Name = "btnCentralRight";
             this.btnCentralRight.Size = new System.Drawing.Size(75, 85);
             this.btnCentralRight.TabIndex = 0;
@@ -772,7 +1214,7 @@
             this.grpImages.Font = new System.Drawing.Font("B Nazanin", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.grpImages.Location = new System.Drawing.Point(10, 222);
             this.grpImages.Name = "grpImages";
-            this.grpImages.Size = new System.Drawing.Size(637, 144);
+            this.grpImages.Size = new System.Drawing.Size(457, 144);
             this.grpImages.TabIndex = 12;
             this.grpImages.TabStop = false;
             this.grpImages.Text = "تصاویر و مدارک";
@@ -781,7 +1223,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(548, 20);
+            this.label18.Location = new System.Drawing.Point(338, 59);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(89, 29);
             this.label18.TabIndex = 16;
@@ -793,7 +1235,7 @@
             this.btnUploadDoctorSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadDoctorSign.Font = new System.Drawing.Font("B Nazanin", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnUploadDoctorSign.ForeColor = System.Drawing.Color.White;
-            this.btnUploadDoctorSign.Location = new System.Drawing.Point(443, 20);
+            this.btnUploadDoctorSign.Location = new System.Drawing.Point(338, 22);
             this.btnUploadDoctorSign.Name = "btnUploadDoctorSign";
             this.btnUploadDoctorSign.Size = new System.Drawing.Size(99, 34);
             this.btnUploadDoctorSign.TabIndex = 15;
@@ -805,7 +1247,7 @@
             // 
             this.picDoctorSign.BackColor = System.Drawing.Color.WhiteSmoke;
             this.picDoctorSign.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picDoctorSign.Location = new System.Drawing.Point(329, 21);
+            this.picDoctorSign.Location = new System.Drawing.Point(224, 21);
             this.picDoctorSign.Name = "picDoctorSign";
             this.picDoctorSign.Size = new System.Drawing.Size(108, 96);
             this.picDoctorSign.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -841,7 +1283,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.Location = new System.Drawing.Point(225, 29);
+            this.label17.Location = new System.Drawing.Point(120, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(90, 29);
             this.label17.TabIndex = 12;
@@ -849,29 +1291,108 @@
             // 
             // grpPayments
             // 
+            this.grpPayments.Controls.Add(this.label14);
+            this.grpPayments.Controls.Add(this.label13);
+            this.grpPayments.Controls.Add(this.dtpChequeDate);
+            this.grpPayments.Controls.Add(this.txtChequeNumber);
+            this.grpPayments.Controls.Add(this.txtChequeAmount);
+            this.grpPayments.Controls.Add(this.btnRemoveCheque);
+            this.grpPayments.Controls.Add(this.btnAddCheque);
+            this.grpPayments.Controls.Add(this.dgvCheques);
             this.grpPayments.Controls.Add(this.label16);
             this.grpPayments.Controls.Add(this.txtPaymentNotes);
-            this.grpPayments.Controls.Add(this.label15);
-            this.grpPayments.Controls.Add(this.dateTimePicker1dtpCheckDate);
-            this.grpPayments.Controls.Add(this.label14);
-            this.grpPayments.Controls.Add(this.txtCheckNumber);
-            this.grpPayments.Controls.Add(this.label13);
             this.grpPayments.Controls.Add(this.label12);
-            this.grpPayments.Controls.Add(this.txtTotalAmount);
             this.grpPayments.Controls.Add(this.cmbPaymentType);
             this.grpPayments.Font = new System.Drawing.Font("B Nazanin", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.grpPayments.Location = new System.Drawing.Point(653, 222);
+            this.grpPayments.Location = new System.Drawing.Point(473, 222);
             this.grpPayments.Name = "grpPayments";
-            this.grpPayments.Size = new System.Drawing.Size(739, 144);
+            this.grpPayments.Size = new System.Drawing.Size(919, 144);
             this.grpPayments.TabIndex = 11;
             this.grpPayments.TabStop = false;
             this.grpPayments.Text = "اطلاعات پرداخت";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label14.Location = new System.Drawing.Point(603, 71);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 29);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "تعداد چک";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label13.Location = new System.Drawing.Point(502, 71);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 29);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "مبلغ چک";
+            // 
+            // dtpChequeDate
+            // 
+            this.dtpChequeDate.Location = new System.Drawing.Point(361, 24);
+            this.dtpChequeDate.Name = "dtpChequeDate";
+            this.dtpChequeDate.Size = new System.Drawing.Size(341, 33);
+            this.dtpChequeDate.TabIndex = 12;
+            // 
+            // txtChequeNumber
+            // 
+            this.txtChequeNumber.Location = new System.Drawing.Point(592, 103);
+            this.txtChequeNumber.Name = "txtChequeNumber";
+            this.txtChequeNumber.Size = new System.Drawing.Size(104, 33);
+            this.txtChequeNumber.TabIndex = 12;
+            // 
+            // txtChequeAmount
+            // 
+            this.txtChequeAmount.Location = new System.Drawing.Point(487, 103);
+            this.txtChequeAmount.Name = "txtChequeAmount";
+            this.txtChequeAmount.Size = new System.Drawing.Size(99, 33);
+            this.txtChequeAmount.TabIndex = 13;
+            // 
+            // btnRemoveCheque
+            // 
+            this.btnRemoveCheque.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRemoveCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnRemoveCheque.Location = new System.Drawing.Point(430, 98);
+            this.btnRemoveCheque.Name = "btnRemoveCheque";
+            this.btnRemoveCheque.Size = new System.Drawing.Size(52, 40);
+            this.btnRemoveCheque.TabIndex = 14;
+            this.btnRemoveCheque.Text = "🗑️ حذف";
+            this.btnRemoveCheque.UseVisualStyleBackColor = false;
+            this.btnRemoveCheque.Click += new System.EventHandler(this.btnRemoveCheque_Click);
+            // 
+            // btnAddCheque
+            // 
+            this.btnAddCheque.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAddCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnAddCheque.Location = new System.Drawing.Point(361, 98);
+            this.btnAddCheque.Name = "btnAddCheque";
+            this.btnAddCheque.Size = new System.Drawing.Size(63, 40);
+            this.btnAddCheque.TabIndex = 8;
+            this.btnAddCheque.Text = "📅 انتخاب";
+            this.btnAddCheque.UseVisualStyleBackColor = false;
+            this.btnAddCheque.Click += new System.EventHandler(this.btnAddCheque_Click);
+            // 
+            // dgvCheques
+            // 
+            this.dgvCheques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheques.Location = new System.Drawing.Point(0, 21);
+            this.dgvCheques.Name = "dgvCheques";
+            this.dgvCheques.RowHeadersWidth = 51;
+            this.dgvCheques.RowTemplate.Height = 24;
+            this.dgvCheques.Size = new System.Drawing.Size(355, 117);
+            this.dgvCheques.TabIndex = 13;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(580, 68);
+            this.label16.Location = new System.Drawing.Point(838, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 29);
             this.label16.TabIndex = 12;
@@ -879,72 +1400,21 @@
             // 
             // txtPaymentNotes
             // 
-            this.txtPaymentNotes.Location = new System.Drawing.Point(439, 68);
+            this.txtPaymentNotes.Location = new System.Drawing.Point(708, 63);
             this.txtPaymentNotes.Multiline = true;
             this.txtPaymentNotes.Name = "txtPaymentNotes";
             this.txtPaymentNotes.Size = new System.Drawing.Size(119, 70);
             this.txtPaymentNotes.TabIndex = 12;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.Location = new System.Drawing.Point(353, 69);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 29);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "تاریخ چک:";
-            // 
-            // dateTimePicker1dtpCheckDate
-            // 
-            this.dateTimePicker1dtpCheckDate.Location = new System.Drawing.Point(6, 66);
-            this.dateTimePicker1dtpCheckDate.Name = "dateTimePicker1dtpCheckDate";
-            this.dateTimePicker1dtpCheckDate.Size = new System.Drawing.Size(341, 33);
-            this.dateTimePicker1dtpCheckDate.TabIndex = 12;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(155, 26);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 29);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "شماره چک:";
-            // 
-            // txtCheckNumber
-            // 
-            this.txtCheckNumber.Location = new System.Drawing.Point(6, 25);
-            this.txtCheckNumber.Name = "txtCheckNumber";
-            this.txtCheckNumber.Size = new System.Drawing.Size(143, 33);
-            this.txtCheckNumber.TabIndex = 14;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(364, 26);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 29);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "مبلغ کل:";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(566, 27);
+            this.label12.Location = new System.Drawing.Point(830, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 29);
             this.label12.TabIndex = 12;
             this.label12.Text = "نوع پرداخت:";
-            // 
-            // txtTotalAmount
-            // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(245, 27);
-            this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(113, 33);
-            this.txtTotalAmount.TabIndex = 12;
             // 
             // cmbPaymentType
             // 
@@ -955,7 +1425,7 @@
             "چک",
             "اقساط",
             "معاوضه"});
-            this.cmbPaymentType.Location = new System.Drawing.Point(439, 26);
+            this.cmbPaymentType.Location = new System.Drawing.Point(708, 21);
             this.cmbPaymentType.Name = "cmbPaymentType";
             this.cmbPaymentType.Size = new System.Drawing.Size(119, 34);
             this.cmbPaymentType.TabIndex = 12;
@@ -1284,62 +1754,6 @@
             this.lblLastName.Text = "نام خانوادگی:";
             this.lblLastName.Click += new System.EventHandler(this.lblLastName_Click);
             // 
-            // cmbTeethSize
-            // 
-            this.cmbTeethSize.FormattingEnabled = true;
-            this.cmbTeethSize.Items.AddRange(new object[] {
-            "کوچک ",
-            "متوسط ",
-            "بزرگ"});
-            this.cmbTeethSize.Location = new System.Drawing.Point(276, 278);
-            this.cmbTeethSize.Name = "cmbTeethSize";
-            this.cmbTeethSize.Size = new System.Drawing.Size(153, 37);
-            this.cmbTeethSize.TabIndex = 12;
-            // 
-            // cmbTeethColor
-            // 
-            this.cmbTeethColor.FormattingEnabled = true;
-            this.cmbTeethColor.Items.AddRange(new object[] {
-            "A1",
-            "A2",
-            "A3",
-            "A3",
-            "A3.5",
-            "A4",
-            "B1",
-            "B2",
-            "B3",
-            "B4",
-            "C1",
-            "C2",
-            "C3",
-            "C4",
-            "D2",
-            "D3",
-            "D4"});
-            this.cmbTeethColor.Location = new System.Drawing.Point(6, 279);
-            this.cmbTeethColor.Name = "cmbTeethColor";
-            this.cmbTeethColor.Size = new System.Drawing.Size(175, 37);
-            this.cmbTeethColor.TabIndex = 56;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(435, 283);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(82, 29);
-            this.label24.TabIndex = 57;
-            this.label24.Text = "سایز دندون";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(189, 281);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(81, 29);
-            this.label25.TabIndex = 58;
-            this.label25.Text = "زنگ دندون";
-            // 
             // PatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
@@ -1364,6 +1778,7 @@
             this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelActions.ResumeLayout(false);
+            this.panelActions.PerformLayout();
             this.panelInfo.ResumeLayout(false);
             this.panelTeeth.ResumeLayout(false);
             this.panelTeeth.PerformLayout();
@@ -1373,6 +1788,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picToothImage)).EndInit();
             this.grpPayments.ResumeLayout(false);
             this.grpPayments.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).EndInit();
             this.grptime.ResumeLayout(false);
             this.grptime.PerformLayout();
             this.grpVisit.ResumeLayout(false);
@@ -1426,12 +1842,6 @@
         private System.Windows.Forms.ComboBox cmbPaymentType;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtPaymentNotes;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1dtpCheckDate;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtCheckNumber;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.GroupBox grpImages;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnUploadDoctorSign;
@@ -1443,8 +1853,6 @@
         private System.Windows.Forms.DateTimePicker dtpToothTest;
         private System.Windows.Forms.DateTimePicker dtpCentricRecord;
         private System.Windows.Forms.Panel panelTeeth;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox chkSelectAllTeeth;
         private System.Windows.Forms.TextBox txtSelectedTeeth;
         private System.Windows.Forms.Button btnLateralLeft;
@@ -1454,8 +1862,6 @@
         private System.Windows.Forms.Button btnPremolar2Right;
         private System.Windows.Forms.Button btnMolar1Right;
         private System.Windows.Forms.Button btnMolar2Right;
-        private System.Windows.Forms.Button btnWisdomRight;
-        private System.Windows.Forms.Button btnWisdomLeft;
         private System.Windows.Forms.Button btnMolar1Left;
         private System.Windows.Forms.Button btnMolar2Left;
         private System.Windows.Forms.Button btnPremolar1Right;
@@ -1470,8 +1876,6 @@
         private System.Windows.Forms.Button btnLowerPremolar2Right;
         private System.Windows.Forms.Button btnLowerMolar1Right;
         private System.Windows.Forms.Button btnLowerMolar2Right;
-        private System.Windows.Forms.Button btnLowerWisdomRight;
-        private System.Windows.Forms.Button btnLowerWisdomLeft;
         private System.Windows.Forms.Button btnLowerMolar1Left;
         private System.Windows.Forms.Button btnLowerMolar2Left;
         private System.Windows.Forms.Button btnLowerPremolar1Right;
@@ -1484,10 +1888,54 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txttotal_price;
         private System.Windows.Forms.TextBox txtunit_price;
-        private System.Windows.Forms.TextBox txttooth_type;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cmbTeethColor;
         private System.Windows.Forms.ComboBox cmbTeethSize;
+        private System.Windows.Forms.Button btnRemoveCheque;
+        private System.Windows.Forms.Button btnAddCheque;
+        private System.Windows.Forms.DataGridView dgvCheques;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpChequeDate;
+        private System.Windows.Forms.TextBox txtChequeNumber;
+        private System.Windows.Forms.TextBox txtChequeAmount;
+        private System.Windows.Forms.TextBox txtPriceHardClearLayer;
+        private System.Windows.Forms.TextBox txtPriceHardRedLayer;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtPriceSoftLayer;
+        private System.Windows.Forms.TextBox txtPriceBaseFracture;
+        private System.Windows.Forms.TextBox saksionprice;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.CheckBox checkHardClearTop;
+        private System.Windows.Forms.CheckBox checkHardClearBottom;
+        private System.Windows.Forms.CheckBox checkHardRedBottom;
+        private System.Windows.Forms.CheckBox checkHardRedTop;
+        private System.Windows.Forms.CheckBox checkSoftLayerBottom;
+        private System.Windows.Forms.CheckBox checkSoftLayerTop;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBaseFractureTop;
+        private System.Windows.Forms.ComboBox comboBaseFractureBottom;
+        // private System.Windows.Forms.CheckBox chksaksion; // حذف شده، کاربر خودش اضافه می‌کند
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chkSkeshen;
+        private System.Windows.Forms.ComboBox cmbToothType;
+        private System.Windows.Forms.CheckBox chkHardClearTop;
+        private System.Windows.Forms.CheckBox chkHardClearDown;
+        private System.Windows.Forms.CheckBox chkHardRedDown;
+        private System.Windows.Forms.CheckBox chkHardRedTop;
+        private System.Windows.Forms.CheckBox chksoftdown;
+        private System.Windows.Forms.CheckBox chkSoftTop;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.CheckBox chkSakshen;
     }
 }

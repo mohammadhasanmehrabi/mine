@@ -15,6 +15,8 @@ namespace denyis
     {
         private Button btnAddEdit;
         private Button btnSearch;
+        private Button btnInventory;
+        private Button btnIncome;
         private Label lblTitle;
         private Label lblWelcome;
         private Panel panelButtons;
@@ -74,7 +76,7 @@ namespace denyis
 
             // پنل دکمه‌ها
             panelButtons = new Panel();
-            panelButtons.Size = new Size(320, 160);
+            panelButtons.Size = new Size(320, 240);
             panelButtons.Location = new Point((this.ClientSize.Width - panelButtons.Width) / 2, 140);
             panelButtons.BackColor = Color.FromArgb(80, 80, 120, 40); // نیمه شفاف
             panelButtons.Anchor = AnchorStyles.None;
@@ -116,6 +118,42 @@ namespace denyis
             btnSearch.Paint += ButtonShadow_Paint;
             btnSearch.Click += BtnSearch_Click;
             panelButtons.Controls.Add(btnSearch);
+
+            // دکمه انبار
+            btnInventory = new Button();
+            btnInventory.Text = "مدیریت انبار";
+            btnInventory.Font = new Font("B Nazanin", 16, FontStyle.Bold);
+            btnInventory.Size = new Size(260, 55);
+            btnInventory.Location = new Point(30, 150);
+            btnInventory.BackColor = Color.FromArgb(255, 180, 80);
+            btnInventory.ForeColor = Color.White;
+            btnInventory.FlatStyle = FlatStyle.Flat;
+            btnInventory.FlatAppearance.BorderSize = 0;
+            btnInventory.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnInventory.Width, btnInventory.Height, 25, 25));
+            btnInventory.Cursor = Cursors.Hand;
+            btnInventory.MouseEnter += (s, e) => btnInventory.BackColor = Color.FromArgb(220, 140, 60);
+            btnInventory.MouseLeave += (s, e) => btnInventory.BackColor = Color.FromArgb(255, 180, 80);
+            btnInventory.Paint += ButtonShadow_Paint;
+            btnInventory.Click += BtnInventory_Click;
+            panelButtons.Controls.Add(btnInventory);
+
+            // دکمه محاسبه درآمد
+            btnIncome = new Button();
+            btnIncome.Text = "محاسبه درآمد";
+            btnIncome.Font = new Font("B Nazanin", 16, FontStyle.Bold);
+            btnIncome.Size = new Size(260, 55);
+            btnIncome.Location = new Point(30, 215);
+            btnIncome.BackColor = Color.FromArgb(220, 120, 220);
+            btnIncome.ForeColor = Color.White;
+            btnIncome.FlatStyle = FlatStyle.Flat;
+            btnIncome.FlatAppearance.BorderSize = 0;
+            btnIncome.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnIncome.Width, btnIncome.Height, 25, 25));
+            btnIncome.Cursor = Cursors.Hand;
+            btnIncome.MouseEnter += (s, e) => btnIncome.BackColor = Color.FromArgb(180, 80, 180);
+            btnIncome.MouseLeave += (s, e) => btnIncome.BackColor = Color.FromArgb(220, 120, 220);
+            btnIncome.Paint += ButtonShadow_Paint;
+            btnIncome.Click += BtnIncome_Click;
+            panelButtons.Controls.Add(btnIncome);
         }
 
         // افکت سایه برای دکمه‌ها
@@ -143,6 +181,17 @@ namespace denyis
         {
             SearchForm sf = new SearchForm();
             sf.ShowDialog();
+        }
+
+        private void BtnInventory_Click(object sender, EventArgs e)
+        {
+            anbar inventoryForm = new anbar();
+            inventoryForm.ShowDialog();
+        }
+
+        private void BtnIncome_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("قابلیت محاسبه درآمد در نسخه بعدی اضافه خواهد شد.", "اطلاع‌رسانی", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Form1_Load(object sender, EventArgs e)

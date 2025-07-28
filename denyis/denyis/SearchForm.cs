@@ -117,11 +117,11 @@ namespace denyis
 
             // تنظیم ComboBox رنگ دندان
             cmbTeethColor.Items.Clear();
-            cmbTeethColor.Items.AddRange(new object[] { 
-                "A1", "A2", "A3", "A3.5", "A4", 
-                "B1", "B2", "B3", "B4", 
-                "C1", "C2", "C3", "C4", 
-                "D2", "D3", "D4" 
+            cmbTeethColor.Items.AddRange(new object[] {
+                "A1", "A2", "A3", "A3.5", "A4",
+                "B1", "B2", "B3", "B4",
+                "C1", "C2", "C3", "C4",
+                "D2", "D3", "D4"
             });
         }
 
@@ -181,11 +181,8 @@ namespace denyis
                 if (payments.Count > 0)
                 {
                     var payment = payments[0];
-                    cmbPaymentType.Text = payment.PaymentType;
-                    txtTotalAmount.Text = payment.Amount.ToString();
-                    txtCheckNumber.Text = payment.ChequeNumber;
-                    dateTimePicker1dtpCheckDate.Value = payment.ChequeDate;
-                    txtPaymentNotes.Text = payment.Notes;
+                    cmbPaymentType.Text = payment.PaymentType ?? "";
+                    txtPaymentNotes.Text = payment.Notes ?? "";
                 }
 
                 // 5. بارگذاری اطلاعات دندان‌ها (teeth)
@@ -193,11 +190,13 @@ namespace denyis
                 if (teeth.Count > 0)
                 {
                     var tooth = teeth[0];
-                    txttooth_type.Text = tooth.ToothType;
                     txtunit_price.Text = tooth.UnitPrice.ToString();
                     txttotal_price.Text = tooth.TotalPrice.ToString();
-                    cmbTeethSize.Text = tooth.ToothSize;
-                    cmbTeethColor.Text = tooth.ToothColor;
+                    cmbTeethSize.Text = tooth.ToothSize ?? "";
+                    cmbTeethColor.Text = tooth.ToothColor ?? "";
+
+                    // بارگذاری ویژگی‌های اضافی دندان
+                    LoadAdditionalFeatures(tooth);
 
                     // نمایش دندان‌های انتخاب شده
                     if (!string.IsNullOrEmpty(tooth.ToothName))
@@ -287,7 +286,7 @@ namespace denyis
             try
             {
                 var patients = mysqlManager.GetAllPatients();
-                var filteredPatients = patients.Where(p => 
+                var filteredPatients = patients.Where(p =>
                     p.FirstName.ToLower().Contains(searchTerm.ToLower()) ||
                     p.LastName.ToLower().Contains(searchTerm.ToLower()) ||
                     p.Phone.Contains(searchTerm)
@@ -360,9 +359,6 @@ namespace denyis
                 {
                     var payment = payments[0];
                     payment.PaymentType = cmbPaymentType.Text;
-                    payment.Amount = decimal.Parse(txtTotalAmount.Text);
-                    payment.ChequeNumber = txtCheckNumber.Text.Trim();
-                    payment.ChequeDate = dateTimePicker1dtpCheckDate.Value;
                     payment.Notes = txtPaymentNotes.Text.Trim();
                     mysqlManager.UpdatePayment(payment);
                 }
@@ -373,11 +369,14 @@ namespace denyis
                 {
                     var tooth = teeth[0];
                     tooth.ToothName = string.Join(" / ", selectedTeeth);
-                    tooth.ToothType = txttooth_type.Text;
                     tooth.UnitPrice = decimal.Parse(txtunit_price.Text);
                     tooth.TotalPrice = decimal.Parse(txttotal_price.Text);
                     tooth.ToothSize = cmbTeethSize.Text;
                     tooth.ToothColor = cmbTeethColor.Text;
+                    
+                    // ذخیره ویژگی‌های اضافی دندان
+                    SaveAdditionalFeatures(tooth);
+                    
                     mysqlManager.UpdateTooth(tooth);
                 }
 
@@ -412,13 +411,13 @@ namespace denyis
                 {
                     // حذف بیمار (به دلیل CASCADE، تمام رکوردهای مرتبط نیز حذف می‌شوند)
                     mysqlManager.DeletePatient(currentPatientId);
-                    
+
                     MessageBox.Show("بیمار با موفقیت حذف شد", "موفقیت",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // پاک کردن فرم
                     ClearForm();
-                    
+
                     // بارگذاری مجدد لیست بیماران
                     LoadAllPatients();
                 }
@@ -454,12 +453,11 @@ namespace denyis
             txtVisitNotes.Clear();
 
             cmbPaymentType.SelectedIndex = -1;
-            txtTotalAmount.Clear();
-            txtCheckNumber.Clear();
-            dateTimePicker1dtpCheckDate.Value = DateTime.Now;
             txtPaymentNotes.Clear();
 
-            txttooth_type.Clear();
+            // پاک کردن ویژگی‌های اضافی دندان
+            ClearAdditionalFeatures();
+
             txtunit_price.Clear();
             txttotal_price.Clear();
             cmbTeethSize.SelectedIndex = -1;
@@ -505,7 +503,7 @@ namespace denyis
                         btn.BackColor = Color.DarkBlue;
                         btn.ForeColor = Color.White;
                     }
-                    
+
                     txtSelectedTeeth.Text = string.Join(" / ", selectedTeeth);
                     CalculateTotalPrice();
                 }
@@ -574,6 +572,138 @@ namespace denyis
         private void txtunit_price_TextChanged(object sender, EventArgs e)
         {
             CalculateTotalPrice();
+        }
+
+        private void LoadAdditionalFeatures(Tooth tooth)
+        {
+            try
+            {
+                // بارگذاری ویژگی‌های اضافی دندان با استفاده از Controls.Find
+                if (Controls.Find("comboBaseFractureTop", true).FirstOrDefault() is ComboBox comboBaseFractureTop)
+                    comboBaseFractureTop.Text = tooth.BaseFractureTop ?? "";
+                if (Controls.Find("comboBaseFractureBottom", true).FirstOrDefault() is ComboBox comboBaseFractureBottom)
+                    comboBaseFractureBottom.Text = tooth.BaseFractureBottom ?? "";
+                
+                // CheckBox ها
+                if (Controls.Find("checkBox1", true).FirstOrDefault() is CheckBox chkSaksion)
+                    chkSaksion.Checked = tooth.Saksion;
+                if (Controls.Find("checkBox3", true).FirstOrDefault() is CheckBox chkSoftLayerTop)
+                    chkSoftLayerTop.Checked = tooth.SoftLayerTop;
+                if (Controls.Find("checkBox4", true).FirstOrDefault() is CheckBox chkSoftLayerBottom)
+                    chkSoftLayerBottom.Checked = tooth.SoftLayerBottom;
+                if (Controls.Find("checkBox5", true).FirstOrDefault() is CheckBox chkHardRedTop)
+                    chkHardRedTop.Checked = tooth.HardRedLayerTop;
+                if (Controls.Find("checkBox6", true).FirstOrDefault() is CheckBox chkHardRedBottom)
+                    chkHardRedBottom.Checked = tooth.HardRedLayerBottom;
+                if (Controls.Find("checkBox7", true).FirstOrDefault() is CheckBox chkHardClearTop)
+                    chkHardClearTop.Checked = tooth.HardClearLayerTop;
+                if (Controls.Find("checkBox8", true).FirstOrDefault() is CheckBox chkHardClearBottom)
+                    chkHardClearBottom.Checked = tooth.HardClearLayerBottom;
+
+                // قیمت‌ها
+                if (Controls.Find("txtPriceSoftLayer", true).FirstOrDefault() is TextBox txtSoftLayer)
+                    txtSoftLayer.Text = tooth.PriceSoftLayer.ToString();
+                if (Controls.Find("txtPriceHardRedLayer", true).FirstOrDefault() is TextBox txtHardRed)
+                    txtHardRed.Text = tooth.PriceHardRedLayer.ToString();
+                if (Controls.Find("txtPriceHardClearLayer", true).FirstOrDefault() is TextBox txtHardClear)
+                    txtHardClear.Text = tooth.PriceHardClearLayer.ToString();
+                if (Controls.Find("txtPriceBaseFracture", true).FirstOrDefault() is TextBox txtBaseFracture)
+                    txtBaseFracture.Text = tooth.PriceBaseFracture.ToString();
+                if (Controls.Find("saksionprice", true).FirstOrDefault() is TextBox txtSaksion)
+                    txtSaksion.Text = tooth.PriceSaksion.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در بارگذاری ویژگی‌های اضافی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SaveAdditionalFeatures(Tooth tooth)
+        {
+            try
+            {
+                // ذخیره ویژگی‌های اضافی دندان
+                if (Controls.Find("comboBaseFractureTop", true).FirstOrDefault() is ComboBox comboBaseFractureTop)
+                    tooth.BaseFractureTop = comboBaseFractureTop.Text;
+                if (Controls.Find("comboBaseFractureBottom", true).FirstOrDefault() is ComboBox comboBaseFractureBottom)
+                    tooth.BaseFractureBottom = comboBaseFractureBottom.Text;
+                
+                // CheckBox ها
+                if (Controls.Find("checkBox1", true).FirstOrDefault() is CheckBox chkSaksion)
+                    tooth.Saksion = chkSaksion.Checked;
+                if (Controls.Find("checkBox3", true).FirstOrDefault() is CheckBox chkSoftLayerTop)
+                    tooth.SoftLayerTop = chkSoftLayerTop.Checked;
+                if (Controls.Find("checkBox4", true).FirstOrDefault() is CheckBox chkSoftLayerBottom)
+                    tooth.SoftLayerBottom = chkSoftLayerBottom.Checked;
+                if (Controls.Find("checkBox5", true).FirstOrDefault() is CheckBox chkHardRedTop)
+                    tooth.HardRedLayerTop = chkHardRedTop.Checked;
+                if (Controls.Find("checkBox6", true).FirstOrDefault() is CheckBox chkHardRedBottom)
+                    tooth.HardRedLayerBottom = chkHardRedBottom.Checked;
+                if (Controls.Find("checkBox7", true).FirstOrDefault() is CheckBox chkHardClearTop)
+                    tooth.HardClearLayerTop = chkHardClearTop.Checked;
+                if (Controls.Find("checkBox8", true).FirstOrDefault() is CheckBox chkHardClearBottom)
+                    tooth.HardClearLayerBottom = chkHardClearBottom.Checked;
+
+                // قیمت‌ها
+                if (Controls.Find("txtPriceSoftLayer", true).FirstOrDefault() is TextBox txtSoftLayer)
+                    tooth.PriceSoftLayer = decimal.Parse(txtSoftLayer.Text);
+                if (Controls.Find("txtPriceHardRedLayer", true).FirstOrDefault() is TextBox txtHardRed)
+                    tooth.PriceHardRedLayer = decimal.Parse(txtHardRed.Text);
+                if (Controls.Find("txtPriceHardClearLayer", true).FirstOrDefault() is TextBox txtHardClear)
+                    tooth.PriceHardClearLayer = decimal.Parse(txtHardClear.Text);
+                if (Controls.Find("txtPriceBaseFracture", true).FirstOrDefault() is TextBox txtBaseFracture)
+                    tooth.PriceBaseFracture = decimal.Parse(txtBaseFracture.Text);
+                if (Controls.Find("saksionprice", true).FirstOrDefault() is TextBox txtSaksion)
+                    tooth.PriceSaksion = decimal.Parse(txtSaksion.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در ذخیره ویژگی‌های اضافی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearAdditionalFeatures()
+        {
+            try
+            {
+                // پاک کردن ComboBox ها
+                if (Controls.Find("comboBaseFractureTop", true).FirstOrDefault() is ComboBox comboBaseFractureTop)
+                    comboBaseFractureTop.SelectedIndex = -1;
+                if (Controls.Find("comboBaseFractureBottom", true).FirstOrDefault() is ComboBox comboBaseFractureBottom)
+                    comboBaseFractureBottom.SelectedIndex = -1;
+                
+                // پاک کردن CheckBox ها
+                if (Controls.Find("checkBox1", true).FirstOrDefault() is CheckBox chkSaksion)
+                    chkSaksion.Checked = false;
+                if (Controls.Find("checkBox3", true).FirstOrDefault() is CheckBox chkSoftLayerTop)
+                    chkSoftLayerTop.Checked = false;
+                if (Controls.Find("checkBox4", true).FirstOrDefault() is CheckBox chkSoftLayerBottom)
+                    chkSoftLayerBottom.Checked = false;
+                if (Controls.Find("checkBox5", true).FirstOrDefault() is CheckBox chkHardRedTop)
+                    chkHardRedTop.Checked = false;
+                if (Controls.Find("checkBox6", true).FirstOrDefault() is CheckBox chkHardRedBottom)
+                    chkHardRedBottom.Checked = false;
+                if (Controls.Find("checkBox7", true).FirstOrDefault() is CheckBox chkHardClearTop)
+                    chkHardClearTop.Checked = false;
+                if (Controls.Find("checkBox8", true).FirstOrDefault() is CheckBox chkHardClearBottom)
+                    chkHardClearBottom.Checked = false;
+
+                // پاک کردن قیمت‌ها
+                if (Controls.Find("txtPriceSoftLayer", true).FirstOrDefault() is TextBox txtSoftLayer)
+                    txtSoftLayer.Clear();
+                if (Controls.Find("txtPriceHardRedLayer", true).FirstOrDefault() is TextBox txtHardRed)
+                    txtHardRed.Clear();
+                if (Controls.Find("txtPriceHardClearLayer", true).FirstOrDefault() is TextBox txtHardClear)
+                    txtHardClear.Clear();
+                if (Controls.Find("txtPriceBaseFracture", true).FirstOrDefault() is TextBox txtBaseFracture)
+                    txtBaseFracture.Clear();
+                if (Controls.Find("saksionprice", true).FirstOrDefault() is TextBox txtSaksion)
+                    txtSaksion.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در پاک کردن ویژگی‌های اضافی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
