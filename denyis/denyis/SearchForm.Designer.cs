@@ -41,7 +41,45 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.grpPayments = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dtpChequeDate = new System.Windows.Forms.DateTimePicker();
+            this.txtChequeNumber = new System.Windows.Forms.TextBox();
+            this.txtChequeAmount = new System.Windows.Forms.TextBox();
+            this.btnRemoveCheque = new System.Windows.Forms.Button();
+            this.btnAddCheque = new System.Windows.Forms.Button();
+            this.dgvCheques = new System.Windows.Forms.DataGridView();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPaymentNotes = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cmbPaymentType = new System.Windows.Forms.ComboBox();
             this.panelTeeth = new System.Windows.Forms.Panel();
+            this.txtPriceHardClearLayer = new System.Windows.Forms.TextBox();
+            this.txtPriceHardRedLayer = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtPriceSoftLayer = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtPriceBaseFracture = new System.Windows.Forms.TextBox();
+            this.saksionprice = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBaseFractureTop = new System.Windows.Forms.ComboBox();
+            this.comboBaseFractureBottom = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cmbToothType = new System.Windows.Forms.ComboBox();
             this.chkSelectAllTeeth = new System.Windows.Forms.CheckBox();
             this.txtSelectedTeeth = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -120,49 +158,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.cmbToothType = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBaseFractureTop = new System.Windows.Forms.ComboBox();
-            this.comboBaseFractureBottom = new System.Windows.Forms.ComboBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txtPriceBaseFracture = new System.Windows.Forms.TextBox();
-            this.saksionprice = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtPriceHardClearLayer = new System.Windows.Forms.TextBox();
-            this.txtPriceHardRedLayer = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtPriceSoftLayer = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.grpPayments = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dtpChequeDate = new System.Windows.Forms.DateTimePicker();
-            this.txtChequeNumber = new System.Windows.Forms.TextBox();
-            this.txtChequeAmount = new System.Windows.Forms.TextBox();
-            this.btnRemoveCheque = new System.Windows.Forms.Button();
-            this.btnAddCheque = new System.Windows.Forms.Button();
-            this.dgvCheques = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtPaymentNotes = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.cmbPaymentType = new System.Windows.Forms.ComboBox();
+            this.totalchekmony = new System.Windows.Forms.TextBox();
+            this.txtTottalCheque = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.panel1.SuspendLayout();
+            this.grpPayments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).BeginInit();
             this.panelTeeth.SuspendLayout();
             this.grpImages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctorSign)).BeginInit();
@@ -170,8 +174,6 @@
             this.grptime.SuspendLayout();
             this.grpVisit.SuspendLayout();
             this.grpbimar.SuspendLayout();
-            this.grpPayments.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -341,6 +343,147 @@
             this.panel1.Size = new System.Drawing.Size(1538, 933);
             this.panel1.TabIndex = 2;
             // 
+            // grpPayments
+            // 
+            this.grpPayments.Controls.Add(this.txtTottalCheque);
+            this.grpPayments.Controls.Add(this.totalchekmony);
+            this.grpPayments.Controls.Add(this.label14);
+            this.grpPayments.Controls.Add(this.label16);
+            this.grpPayments.Controls.Add(this.dtpChequeDate);
+            this.grpPayments.Controls.Add(this.txtChequeNumber);
+            this.grpPayments.Controls.Add(this.txtChequeAmount);
+            this.grpPayments.Controls.Add(this.btnRemoveCheque);
+            this.grpPayments.Controls.Add(this.btnAddCheque);
+            this.grpPayments.Controls.Add(this.dgvCheques);
+            this.grpPayments.Controls.Add(this.label17);
+            this.grpPayments.Controls.Add(this.txtPaymentNotes);
+            this.grpPayments.Controls.Add(this.label20);
+            this.grpPayments.Controls.Add(this.cmbPaymentType);
+            this.grpPayments.Font = new System.Drawing.Font("B Nazanin", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.grpPayments.Location = new System.Drawing.Point(624, 444);
+            this.grpPayments.Name = "grpPayments";
+            this.grpPayments.Size = new System.Drawing.Size(919, 147);
+            this.grpPayments.TabIndex = 95;
+            this.grpPayments.TabStop = false;
+            this.grpPayments.Text = "اطلاعات پرداخت";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label14.Location = new System.Drawing.Point(544, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 29);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "تعداد چک";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label16.Location = new System.Drawing.Point(435, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 29);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "مبلغ چک";
+            // 
+            // dtpChequeDate
+            // 
+            this.dtpChequeDate.Location = new System.Drawing.Point(361, 24);
+            this.dtpChequeDate.Name = "dtpChequeDate";
+            this.dtpChequeDate.Size = new System.Drawing.Size(141, 33);
+            this.dtpChequeDate.TabIndex = 12;
+            // 
+            // txtChequeNumber
+            // 
+            this.txtChequeNumber.Location = new System.Drawing.Point(532, 103);
+            this.txtChequeNumber.Name = "txtChequeNumber";
+            this.txtChequeNumber.Size = new System.Drawing.Size(104, 33);
+            this.txtChequeNumber.TabIndex = 12;
+            // 
+            // txtChequeAmount
+            // 
+            this.txtChequeAmount.Location = new System.Drawing.Point(427, 103);
+            this.txtChequeAmount.Name = "txtChequeAmount";
+            this.txtChequeAmount.Size = new System.Drawing.Size(99, 33);
+            this.txtChequeAmount.TabIndex = 13;
+            // 
+            // btnRemoveCheque
+            // 
+            this.btnRemoveCheque.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRemoveCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnRemoveCheque.Location = new System.Drawing.Point(361, 58);
+            this.btnRemoveCheque.Name = "btnRemoveCheque";
+            this.btnRemoveCheque.Size = new System.Drawing.Size(63, 40);
+            this.btnRemoveCheque.TabIndex = 14;
+            this.btnRemoveCheque.Text = "🗑️ حذف";
+            this.btnRemoveCheque.UseVisualStyleBackColor = false;
+            // 
+            // btnAddCheque
+            // 
+            this.btnAddCheque.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAddCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnAddCheque.Location = new System.Drawing.Point(361, 98);
+            this.btnAddCheque.Name = "btnAddCheque";
+            this.btnAddCheque.Size = new System.Drawing.Size(63, 40);
+            this.btnAddCheque.TabIndex = 8;
+            this.btnAddCheque.Text = "📅 انتخاب";
+            this.btnAddCheque.UseVisualStyleBackColor = false;
+            // 
+            // dgvCheques
+            // 
+            this.dgvCheques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheques.Location = new System.Drawing.Point(0, 21);
+            this.dgvCheques.Name = "dgvCheques";
+            this.dgvCheques.RowHeadersWidth = 51;
+            this.dgvCheques.RowTemplate.Height = 24;
+            this.dgvCheques.Size = new System.Drawing.Size(355, 117);
+            this.dgvCheques.TabIndex = 13;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label17.Location = new System.Drawing.Point(841, 54);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(75, 29);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "توضیحات:";
+            // 
+            // txtPaymentNotes
+            // 
+            this.txtPaymentNotes.Location = new System.Drawing.Point(713, 63);
+            this.txtPaymentNotes.Multiline = true;
+            this.txtPaymentNotes.Name = "txtPaymentNotes";
+            this.txtPaymentNotes.Size = new System.Drawing.Size(119, 70);
+            this.txtPaymentNotes.TabIndex = 12;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label20.Location = new System.Drawing.Point(830, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(89, 29);
+            this.label20.TabIndex = 12;
+            this.label20.Text = "نوع پرداخت:";
+            // 
+            // cmbPaymentType
+            // 
+            this.cmbPaymentType.FormattingEnabled = true;
+            this.cmbPaymentType.Items.AddRange(new object[] {
+            "نقد",
+            "کارت",
+            "چک",
+            "اقساط",
+            "معاوضه"});
+            this.cmbPaymentType.Location = new System.Drawing.Point(713, 25);
+            this.cmbPaymentType.Name = "cmbPaymentType";
+            this.cmbPaymentType.Size = new System.Drawing.Size(111, 34);
+            this.cmbPaymentType.TabIndex = 12;
+            // 
             // panelTeeth
             // 
             this.panelTeeth.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -413,6 +556,281 @@
             this.panelTeeth.Name = "panelTeeth";
             this.panelTeeth.Size = new System.Drawing.Size(1514, 348);
             this.panelTeeth.TabIndex = 14;
+            // 
+            // txtPriceHardClearLayer
+            // 
+            this.txtPriceHardClearLayer.Location = new System.Drawing.Point(1263, 294);
+            this.txtPriceHardClearLayer.Name = "txtPriceHardClearLayer";
+            this.txtPriceHardClearLayer.Size = new System.Drawing.Size(121, 34);
+            this.txtPriceHardClearLayer.TabIndex = 94;
+            // 
+            // txtPriceHardRedLayer
+            // 
+            this.txtPriceHardRedLayer.Location = new System.Drawing.Point(1263, 257);
+            this.txtPriceHardRedLayer.Name = "txtPriceHardRedLayer";
+            this.txtPriceHardRedLayer.Size = new System.Drawing.Size(121, 34);
+            this.txtPriceHardRedLayer.TabIndex = 93;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label32.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label32.Location = new System.Drawing.Point(1390, 299);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(116, 29);
+            this.label32.TabIndex = 89;
+            this.label32.Text = "لایه سخت شفاف";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label31.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label31.Location = new System.Drawing.Point(1447, 222);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 29);
+            this.label31.TabIndex = 90;
+            this.label31.Text = "لایه نرم";
+            // 
+            // txtPriceSoftLayer
+            // 
+            this.txtPriceSoftLayer.Location = new System.Drawing.Point(1263, 217);
+            this.txtPriceSoftLayer.Name = "txtPriceSoftLayer";
+            this.txtPriceSoftLayer.Size = new System.Drawing.Size(121, 34);
+            this.txtPriceSoftLayer.TabIndex = 92;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label30.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label30.Location = new System.Drawing.Point(1398, 251);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(108, 29);
+            this.label30.TabIndex = 91;
+            this.label30.Text = "لایه سخت قرمز";
+            // 
+            // txtPriceBaseFracture
+            // 
+            this.txtPriceBaseFracture.Location = new System.Drawing.Point(1146, 177);
+            this.txtPriceBaseFracture.Name = "txtPriceBaseFracture";
+            this.txtPriceBaseFracture.Size = new System.Drawing.Size(121, 34);
+            this.txtPriceBaseFracture.TabIndex = 88;
+            // 
+            // saksionprice
+            // 
+            this.saksionprice.Location = new System.Drawing.Point(1270, 178);
+            this.saksionprice.Name = "saksionprice";
+            this.saksionprice.Size = new System.Drawing.Size(121, 34);
+            this.saksionprice.TabIndex = 85;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label29.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label29.Location = new System.Drawing.Point(1161, 214);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(96, 29);
+            this.label29.TabIndex = 87;
+            this.label29.Text = "بیس شکسته ";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label28.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label28.Location = new System.Drawing.Point(1397, 182);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(112, 29);
+            this.label28.TabIndex = 86;
+            this.label28.Text = "قیمت ساکسیون";
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox8.Location = new System.Drawing.Point(1293, 104);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(56, 33);
+            this.checkBox8.TabIndex = 84;
+            this.checkBox8.Text = "بالا";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox7.Location = new System.Drawing.Point(1216, 104);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(71, 33);
+            this.checkBox7.TabIndex = 83;
+            this.checkBox7.Text = "پایین";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox6.Location = new System.Drawing.Point(1216, 139);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(71, 33);
+            this.checkBox6.TabIndex = 82;
+            this.checkBox6.Text = "پایین";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox5.Location = new System.Drawing.Point(1293, 139);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(56, 33);
+            this.checkBox5.TabIndex = 81;
+            this.checkBox5.Text = "بالا";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox4.Location = new System.Drawing.Point(1216, 75);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(71, 33);
+            this.checkBox4.TabIndex = 80;
+            this.checkBox4.Text = "پایین";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox3.Location = new System.Drawing.Point(1293, 78);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(56, 33);
+            this.checkBox3.TabIndex = 79;
+            this.checkBox3.Text = "بالا";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label35.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label35.Location = new System.Drawing.Point(1390, 111);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(116, 29);
+            this.label35.TabIndex = 78;
+            this.label35.Text = "لایه سخت شفاف";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label34.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label34.Location = new System.Drawing.Point(1398, 143);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(108, 29);
+            this.label34.TabIndex = 77;
+            this.label34.Text = "لایه سخت قرمز";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label33.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label33.Location = new System.Drawing.Point(1447, 79);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 29);
+            this.label33.TabIndex = 76;
+            this.label33.Text = "لایه نرم";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label15.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label15.Location = new System.Drawing.Point(1368, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(141, 29);
+            this.label15.TabIndex = 74;
+            this.label15.Text = "بیس شکسته فک بالا";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label13.Location = new System.Drawing.Point(1355, 39);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(154, 29);
+            this.label13.TabIndex = 75;
+            this.label13.Text = "بیس شکسته فک پایین";
+            // 
+            // comboBaseFractureTop
+            // 
+            this.comboBaseFractureTop.FormattingEnabled = true;
+            this.comboBaseFractureTop.Items.AddRange(new object[] {
+            "هیچ سیمی نمیاد",
+            "یک سیم نازک فک بالا",
+            "یک سیم متوسط فک بالا",
+            "یک سیم ضحیم فک بالا",
+            "دو سیم نازک فک بالا",
+            "دو سیم متوسط فک بالا",
+            "دو سیم ضحیم فک بالا",
+            "سه سیم نازک فک بالا",
+            "سه سیم متوسط فک بالا",
+            "سه سیم ضحیم فک بالا"});
+            this.comboBaseFractureTop.Location = new System.Drawing.Point(1214, 3);
+            this.comboBaseFractureTop.Name = "comboBaseFractureTop";
+            this.comboBaseFractureTop.Size = new System.Drawing.Size(135, 34);
+            this.comboBaseFractureTop.TabIndex = 72;
+            // 
+            // comboBaseFractureBottom
+            // 
+            this.comboBaseFractureBottom.FormattingEnabled = true;
+            this.comboBaseFractureBottom.Items.AddRange(new object[] {
+            "هیچ سیمی نمیاد",
+            "یک سیم نازک فک پایین",
+            "یک سیم متوسط فک پایین",
+            "یک سیم ضحیم فک پایین",
+            "دو سیم نازک فک پایین",
+            "دو سیم متوسط فک پایین",
+            "دو سیم ضحیم فک پایین",
+            "سه سیم نازک فک پاینن",
+            "سه سیم متوسط فک پایین",
+            "سه سیم ضحیم فک پایین"});
+            this.comboBaseFractureBottom.Location = new System.Drawing.Point(1214, 39);
+            this.comboBaseFractureBottom.Name = "comboBaseFractureBottom";
+            this.comboBaseFractureBottom.Size = new System.Drawing.Size(135, 34);
+            this.comboBaseFractureBottom.TabIndex = 73;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.checkBox1.Location = new System.Drawing.Point(791, 303);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(166, 33);
+            this.checkBox1.TabIndex = 71;
+            this.checkBox1.Text = "ساکسیون(ساکشن)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // cmbToothType
+            // 
+            this.cmbToothType.FormattingEnabled = true;
+            this.cmbToothType.Location = new System.Drawing.Point(853, 266);
+            this.cmbToothType.Name = "cmbToothType";
+            this.cmbToothType.Size = new System.Drawing.Size(173, 34);
+            this.cmbToothType.TabIndex = 70;
             // 
             // chkSelectAllTeeth
             // 
@@ -613,7 +1031,7 @@
             this.btnLowerPremolar2Right.Name = "btnLowerPremolar2Right";
             this.btnLowerPremolar2Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar2Right.TabIndex = 44;
-            this.btnLowerPremolar2Right.Tag = "\tفک پایین - پرمولر دوم راست";
+            this.btnLowerPremolar2Right.Tag = "فک پایین - پرمولر دوم راست";
             this.btnLowerPremolar2Right.Text = "پرمولر دوم راست";
             this.btnLowerPremolar2Right.UseVisualStyleBackColor = false;
             // 
@@ -678,7 +1096,7 @@
             this.btnLowerPremolar1Right.Name = "btnLowerPremolar1Right";
             this.btnLowerPremolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar1Right.TabIndex = 37;
-            this.btnLowerPremolar1Right.Tag = "\tفک پایین - پرمولر اول راست";
+            this.btnLowerPremolar1Right.Tag = "فک پایین - پرمولر اول راست";
             this.btnLowerPremolar1Right.Text = "پرمولر اول راست";
             this.btnLowerPremolar1Right.UseVisualStyleBackColor = false;
             // 
@@ -1328,419 +1746,19 @@
             this.lblLastName.TabIndex = 1;
             this.lblLastName.Text = "نام خانوادگی:";
             // 
-            // cmbToothType
-            // 
-            this.cmbToothType.FormattingEnabled = true;
-            this.cmbToothType.Location = new System.Drawing.Point(853, 266);
-            this.cmbToothType.Name = "cmbToothType";
-            this.cmbToothType.Size = new System.Drawing.Size(173, 34);
-            this.cmbToothType.TabIndex = 70;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox1.Location = new System.Drawing.Point(791, 303);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(166, 33);
-            this.checkBox1.TabIndex = 71;
-            this.checkBox1.Text = "ساکسیون(ساکشن)";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label15.Location = new System.Drawing.Point(1368, 3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(141, 29);
-            this.label15.TabIndex = 74;
-            this.label15.Text = "بیس شکسته فک بالا";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label13.Location = new System.Drawing.Point(1355, 39);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(154, 29);
-            this.label13.TabIndex = 75;
-            this.label13.Text = "بیس شکسته فک پایین";
-            // 
-            // comboBaseFractureTop
-            // 
-            this.comboBaseFractureTop.FormattingEnabled = true;
-            this.comboBaseFractureTop.Items.AddRange(new object[] {
-            "هیچ سیمی نمیاد",
-            "یک سیم نازک فک بالا",
-            "یک سیم متوسط فک بالا",
-            "یک سیم ضحیم فک بالا",
-            "دو سیم نازک فک بالا",
-            "دو سیم متوسط فک بالا",
-            "دو سیم ضحیم فک بالا",
-            "سه سیم نازک فک بالا",
-            "سه سیم متوسط فک بالا",
-            "سه سیم ضحیم فک بالا"});
-            this.comboBaseFractureTop.Location = new System.Drawing.Point(1214, 3);
-            this.comboBaseFractureTop.Name = "comboBaseFractureTop";
-            this.comboBaseFractureTop.Size = new System.Drawing.Size(135, 34);
-            this.comboBaseFractureTop.TabIndex = 72;
-            // 
-            // comboBaseFractureBottom
-            // 
-            this.comboBaseFractureBottom.FormattingEnabled = true;
-            this.comboBaseFractureBottom.Items.AddRange(new object[] {
-            "هیچ سیمی نمیاد",
-            "یک سیم نازک فک پایین",
-            "یک سیم متوسط فک پایین",
-            "یک سیم ضحیم فک پایین",
-            "دو سیم نازک فک پایین",
-            "دو سیم متوسط فک پایین",
-            "دو سیم ضحیم فک پایین",
-            "سه سیم نازک فک پاینن",
-            "سه سیم متوسط فک پایین",
-            "سه سیم ضحیم فک پایین"});
-            this.comboBaseFractureBottom.Location = new System.Drawing.Point(1214, 39);
-            this.comboBaseFractureBottom.Name = "comboBaseFractureBottom";
-            this.comboBaseFractureBottom.Size = new System.Drawing.Size(135, 34);
-            this.comboBaseFractureBottom.TabIndex = 73;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox8.Location = new System.Drawing.Point(1293, 104);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(56, 33);
-            this.checkBox8.TabIndex = 84;
-            this.checkBox8.Text = "بالا";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox7.Location = new System.Drawing.Point(1216, 104);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(71, 33);
-            this.checkBox7.TabIndex = 83;
-            this.checkBox7.Text = "پایین";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox6.Location = new System.Drawing.Point(1216, 139);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(71, 33);
-            this.checkBox6.TabIndex = 82;
-            this.checkBox6.Text = "پایین";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox5.Location = new System.Drawing.Point(1293, 139);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(56, 33);
-            this.checkBox5.TabIndex = 81;
-            this.checkBox5.Text = "بالا";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox4.Location = new System.Drawing.Point(1216, 75);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(71, 33);
-            this.checkBox4.TabIndex = 80;
-            this.checkBox4.Text = "پایین";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBox3.Location = new System.Drawing.Point(1293, 78);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(56, 33);
-            this.checkBox3.TabIndex = 79;
-            this.checkBox3.Text = "بالا";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label35.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label35.Location = new System.Drawing.Point(1390, 111);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(116, 29);
-            this.label35.TabIndex = 78;
-            this.label35.Text = "لایه سخت شفاف";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label34.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label34.Location = new System.Drawing.Point(1398, 143);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(108, 29);
-            this.label34.TabIndex = 77;
-            this.label34.Text = "لایه سخت قرمز";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label33.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label33.Location = new System.Drawing.Point(1447, 79);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(59, 29);
-            this.label33.TabIndex = 76;
-            this.label33.Text = "لایه نرم";
-            // 
-            // txtPriceBaseFracture
-            // 
-            this.txtPriceBaseFracture.Location = new System.Drawing.Point(1146, 177);
-            this.txtPriceBaseFracture.Name = "txtPriceBaseFracture";
-            this.txtPriceBaseFracture.Size = new System.Drawing.Size(121, 34);
-            this.txtPriceBaseFracture.TabIndex = 88;
-            // 
-            // saksionprice
-            // 
-            this.saksionprice.Location = new System.Drawing.Point(1270, 178);
-            this.saksionprice.Name = "saksionprice";
-            this.saksionprice.Size = new System.Drawing.Size(121, 34);
-            this.saksionprice.TabIndex = 85;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label29.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label29.Location = new System.Drawing.Point(1161, 214);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(96, 29);
-            this.label29.TabIndex = 87;
-            this.label29.Text = "بیس شکسته ";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label28.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label28.Location = new System.Drawing.Point(1397, 182);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(112, 29);
-            this.label28.TabIndex = 86;
-            this.label28.Text = "قیمت ساکسیون";
-            // 
-            // txtPriceHardClearLayer
-            // 
-            this.txtPriceHardClearLayer.Location = new System.Drawing.Point(1263, 294);
-            this.txtPriceHardClearLayer.Name = "txtPriceHardClearLayer";
-            this.txtPriceHardClearLayer.Size = new System.Drawing.Size(121, 34);
-            this.txtPriceHardClearLayer.TabIndex = 94;
-            // 
-            // txtPriceHardRedLayer
-            // 
-            this.txtPriceHardRedLayer.Location = new System.Drawing.Point(1263, 257);
-            this.txtPriceHardRedLayer.Name = "txtPriceHardRedLayer";
-            this.txtPriceHardRedLayer.Size = new System.Drawing.Size(121, 34);
-            this.txtPriceHardRedLayer.TabIndex = 93;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label32.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label32.Location = new System.Drawing.Point(1390, 299);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(116, 29);
-            this.label32.TabIndex = 89;
-            this.label32.Text = "لایه سخت شفاف";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label31.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label31.Location = new System.Drawing.Point(1447, 222);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(59, 29);
-            this.label31.TabIndex = 90;
-            this.label31.Text = "لایه نرم";
-            // 
-            // txtPriceSoftLayer
-            // 
-            this.txtPriceSoftLayer.Location = new System.Drawing.Point(1263, 217);
-            this.txtPriceSoftLayer.Name = "txtPriceSoftLayer";
-            this.txtPriceSoftLayer.Size = new System.Drawing.Size(121, 34);
-            this.txtPriceSoftLayer.TabIndex = 92;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label30.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label30.Location = new System.Drawing.Point(1398, 251);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(108, 29);
-            this.label30.TabIndex = 91;
-            this.label30.Text = "لایه سخت قرمز";
-            // 
-            // grpPayments
-            // 
-            this.grpPayments.Controls.Add(this.label14);
-            this.grpPayments.Controls.Add(this.label16);
-            this.grpPayments.Controls.Add(this.dtpChequeDate);
-            this.grpPayments.Controls.Add(this.txtChequeNumber);
-            this.grpPayments.Controls.Add(this.txtChequeAmount);
-            this.grpPayments.Controls.Add(this.btnRemoveCheque);
-            this.grpPayments.Controls.Add(this.btnAddCheque);
-            this.grpPayments.Controls.Add(this.dgvCheques);
-            this.grpPayments.Controls.Add(this.label17);
-            this.grpPayments.Controls.Add(this.txtPaymentNotes);
-            this.grpPayments.Controls.Add(this.label20);
-            this.grpPayments.Controls.Add(this.cmbPaymentType);
-            this.grpPayments.Font = new System.Drawing.Font("B Nazanin", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.grpPayments.Location = new System.Drawing.Point(624, 444);
-            this.grpPayments.Name = "grpPayments";
-            this.grpPayments.Size = new System.Drawing.Size(919, 147);
-            this.grpPayments.TabIndex = 95;
-            this.grpPayments.TabStop = false;
-            this.grpPayments.Text = "اطلاعات پرداخت";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(544, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 29);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "تعداد چک";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(435, 71);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 29);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "مبلغ چک";
-            // 
-            // dtpChequeDate
-            // 
-            this.dtpChequeDate.Location = new System.Drawing.Point(361, 24);
-            this.dtpChequeDate.Name = "dtpChequeDate";
-            this.dtpChequeDate.Size = new System.Drawing.Size(341, 33);
-            this.dtpChequeDate.TabIndex = 12;
-            // 
-            // txtChequeNumber
-            // 
-            this.txtChequeNumber.Location = new System.Drawing.Point(532, 103);
-            this.txtChequeNumber.Name = "txtChequeNumber";
-            this.txtChequeNumber.Size = new System.Drawing.Size(104, 33);
-            this.txtChequeNumber.TabIndex = 12;
-            // 
-            // txtChequeAmount
-            // 
-            this.txtChequeAmount.Location = new System.Drawing.Point(427, 103);
-            this.txtChequeAmount.Name = "txtChequeAmount";
-            this.txtChequeAmount.Size = new System.Drawing.Size(99, 33);
-            this.txtChequeAmount.TabIndex = 13;
-            // 
-            // btnRemoveCheque
-            // 
-            this.btnRemoveCheque.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRemoveCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnRemoveCheque.Location = new System.Drawing.Point(361, 58);
-            this.btnRemoveCheque.Name = "btnRemoveCheque";
-            this.btnRemoveCheque.Size = new System.Drawing.Size(63, 40);
-            this.btnRemoveCheque.TabIndex = 14;
-            this.btnRemoveCheque.Text = "🗑️ حذف";
-            this.btnRemoveCheque.UseVisualStyleBackColor = false;
-            // 
-            // btnAddCheque
-            // 
-            this.btnAddCheque.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAddCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCheque.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnAddCheque.Location = new System.Drawing.Point(361, 98);
-            this.btnAddCheque.Name = "btnAddCheque";
-            this.btnAddCheque.Size = new System.Drawing.Size(63, 40);
-            this.btnAddCheque.TabIndex = 8;
-            this.btnAddCheque.Text = "📅 انتخاب";
-            this.btnAddCheque.UseVisualStyleBackColor = false;
-            // 
-            // dgvCheques
-            // 
-            this.dgvCheques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCheques.Location = new System.Drawing.Point(0, 21);
-            this.dgvCheques.Name = "dgvCheques";
-            this.dgvCheques.RowHeadersWidth = 51;
-            this.dgvCheques.RowTemplate.Height = 24;
-            this.dgvCheques.Size = new System.Drawing.Size(355, 117);
-            this.dgvCheques.TabIndex = 13;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.Location = new System.Drawing.Point(841, 54);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(75, 29);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "توضیحات:";
-            // 
-            // txtPaymentNotes
-            // 
-            this.txtPaymentNotes.Location = new System.Drawing.Point(708, 61);
-            this.txtPaymentNotes.Multiline = true;
-            this.txtPaymentNotes.Name = "txtPaymentNotes";
-            this.txtPaymentNotes.Size = new System.Drawing.Size(119, 70);
-            this.txtPaymentNotes.TabIndex = 12;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label20.Location = new System.Drawing.Point(830, 24);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 29);
-            this.label20.TabIndex = 12;
-            this.label20.Text = "نوع پرداخت:";
-            // 
-            // cmbPaymentType
-            // 
-            this.cmbPaymentType.FormattingEnabled = true;
-            this.cmbPaymentType.Items.AddRange(new object[] {
-            "نقد",
-            "کارت",
-            "چک",
-            "اقساط",
-            "معاوضه"});
-            this.cmbPaymentType.Location = new System.Drawing.Point(708, 21);
-            this.cmbPaymentType.Name = "cmbPaymentType";
-            this.cmbPaymentType.Size = new System.Drawing.Size(119, 34);
-            this.cmbPaymentType.TabIndex = 12;
+            // totalchekmony
+            // 
+            this.totalchekmony.Location = new System.Drawing.Point(508, 26);
+            this.totalchekmony.Name = "totalchekmony";
+            this.totalchekmony.Size = new System.Drawing.Size(99, 33);
+            this.totalchekmony.TabIndex = 17;
+            // 
+            // txtTottalCheque
+            // 
+            this.txtTottalCheque.Location = new System.Drawing.Point(608, 26);
+            this.txtTottalCheque.Name = "txtTottalCheque";
+            this.txtTottalCheque.Size = new System.Drawing.Size(99, 33);
+            this.txtTottalCheque.TabIndex = 19;
             // 
             // SearchForm
             // 
@@ -1763,6 +1781,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.grpPayments.ResumeLayout(false);
+            this.grpPayments.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).EndInit();
             this.panelTeeth.ResumeLayout(false);
             this.panelTeeth.PerformLayout();
             this.grpImages.ResumeLayout(false);
@@ -1775,9 +1796,6 @@
             this.grpVisit.PerformLayout();
             this.grpbimar.ResumeLayout(false);
             this.grpbimar.PerformLayout();
-            this.grpPayments.ResumeLayout(false);
-            this.grpPayments.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheques)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1914,5 +1932,7 @@
         private System.Windows.Forms.TextBox txtPaymentNotes;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cmbPaymentType;
+        private System.Windows.Forms.TextBox totalchekmony;
+        private System.Windows.Forms.TextBox txtTottalCheque;
     }
 }

@@ -119,6 +119,8 @@
             this.picToothImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.grpPayments = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.totalchekmony = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpChequeDate = new System.Windows.Forms.DateTimePicker();
@@ -163,6 +165,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
+            this.txtTottalCheque = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelActions.SuspendLayout();
@@ -913,7 +917,7 @@
             this.btnLowerPremolar2Right.Name = "btnLowerPremolar2Right";
             this.btnLowerPremolar2Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar2Right.TabIndex = 44;
-            this.btnLowerPremolar2Right.Tag = "\tفک پایین - پرمولر دوم راست";
+            this.btnLowerPremolar2Right.Tag = "فک پایین - پرمولر دوم راست";
             this.btnLowerPremolar2Right.Text = "پرمولر دوم راست";
             this.btnLowerPremolar2Right.UseVisualStyleBackColor = true;
             this.btnLowerPremolar2Right.Click += new System.EventHandler(this.ToothButton_Click);
@@ -973,7 +977,7 @@
             this.btnLowerPremolar1Right.Name = "btnLowerPremolar1Right";
             this.btnLowerPremolar1Right.Size = new System.Drawing.Size(75, 85);
             this.btnLowerPremolar1Right.TabIndex = 37;
-            this.btnLowerPremolar1Right.Tag = "\tفک پایین - پرمولر اول راست";
+            this.btnLowerPremolar1Right.Tag = "فک پایین - پرمولر اول راست";
             this.btnLowerPremolar1Right.Text = "پرمولر اول راست";
             this.btnLowerPremolar1Right.UseVisualStyleBackColor = true;
             this.btnLowerPremolar1Right.Click += new System.EventHandler(this.ToothButton_Click);
@@ -1291,6 +1295,10 @@
             // 
             // grpPayments
             // 
+            this.grpPayments.Controls.Add(this.label37);
+            this.grpPayments.Controls.Add(this.txtTottalCheque);
+            this.grpPayments.Controls.Add(this.label36);
+            this.grpPayments.Controls.Add(this.totalchekmony);
             this.grpPayments.Controls.Add(this.label14);
             this.grpPayments.Controls.Add(this.label13);
             this.grpPayments.Controls.Add(this.dtpChequeDate);
@@ -1311,31 +1319,48 @@
             this.grpPayments.TabStop = false;
             this.grpPayments.Text = "اطلاعات پرداخت";
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label36.Location = new System.Drawing.Point(514, 71);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(72, 29);
+            this.label36.TabIndex = 17;
+            this.label36.Text = "مبلغ چک";
+            // 
+            // totalchekmony
+            // 
+            this.totalchekmony.Location = new System.Drawing.Point(361, 60);
+            this.totalchekmony.Name = "totalchekmony";
+            this.totalchekmony.Size = new System.Drawing.Size(99, 33);
+            this.totalchekmony.TabIndex = 16;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label14.Location = new System.Drawing.Point(603, 71);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 29);
+            this.label14.Size = new System.Drawing.Size(81, 29);
             this.label14.TabIndex = 15;
-            this.label14.Text = "تعداد چک";
+            this.label14.Text = "شماره چک";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(502, 71);
+            this.label13.Location = new System.Drawing.Point(466, 60);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 29);
+            this.label13.Size = new System.Drawing.Size(32, 29);
             this.label13.TabIndex = 12;
-            this.label13.Text = "مبلغ چک";
+            this.label13.Text = "کل";
             // 
             // dtpChequeDate
             // 
-            this.dtpChequeDate.Location = new System.Drawing.Point(361, 24);
+            this.dtpChequeDate.Location = new System.Drawing.Point(361, 19);
             this.dtpChequeDate.Name = "dtpChequeDate";
-            this.dtpChequeDate.Size = new System.Drawing.Size(341, 33);
+            this.dtpChequeDate.Size = new System.Drawing.Size(156, 33);
             this.dtpChequeDate.TabIndex = 12;
             // 
             // txtChequeNumber
@@ -1392,7 +1417,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(838, 64);
+            this.label16.Location = new System.Drawing.Point(825, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 29);
             this.label16.TabIndex = 12;
@@ -1400,7 +1425,7 @@
             // 
             // txtPaymentNotes
             // 
-            this.txtPaymentNotes.Location = new System.Drawing.Point(708, 63);
+            this.txtPaymentNotes.Location = new System.Drawing.Point(700, 62);
             this.txtPaymentNotes.Multiline = true;
             this.txtPaymentNotes.Name = "txtPaymentNotes";
             this.txtPaymentNotes.Size = new System.Drawing.Size(119, 70);
@@ -1410,7 +1435,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(830, 24);
+            this.label12.Location = new System.Drawing.Point(822, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 29);
             this.label12.TabIndex = 12;
@@ -1425,9 +1450,9 @@
             "چک",
             "اقساط",
             "معاوضه"});
-            this.cmbPaymentType.Location = new System.Drawing.Point(708, 21);
+            this.cmbPaymentType.Location = new System.Drawing.Point(702, 24);
             this.cmbPaymentType.Name = "cmbPaymentType";
-            this.cmbPaymentType.Size = new System.Drawing.Size(119, 34);
+            this.cmbPaymentType.Size = new System.Drawing.Size(117, 34);
             this.cmbPaymentType.TabIndex = 12;
             // 
             // grptime
@@ -1754,6 +1779,23 @@
             this.lblLastName.Text = "نام خانوادگی:";
             this.lblLastName.Click += new System.EventHandler(this.lblLastName_Click);
             // 
+            // txtTottalCheque
+            // 
+            this.txtTottalCheque.Location = new System.Drawing.Point(523, 21);
+            this.txtTottalCheque.Name = "txtTottalCheque";
+            this.txtTottalCheque.Size = new System.Drawing.Size(99, 33);
+            this.txtTottalCheque.TabIndex = 18;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label37.Location = new System.Drawing.Point(624, 24);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(76, 29);
+            this.label37.TabIndex = 19;
+            this.label37.Text = "تعداد چک";
+            // 
             // PatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
@@ -1837,11 +1879,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpFvisitDate;
-        private System.Windows.Forms.GroupBox grpPayments;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cmbPaymentType;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtPaymentNotes;
         private System.Windows.Forms.GroupBox grpImages;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnUploadDoctorSign;
@@ -1892,14 +1929,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cmbTeethColor;
         private System.Windows.Forms.ComboBox cmbTeethSize;
-        private System.Windows.Forms.Button btnRemoveCheque;
-        private System.Windows.Forms.Button btnAddCheque;
-        private System.Windows.Forms.DataGridView dgvCheques;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dtpChequeDate;
-        private System.Windows.Forms.TextBox txtChequeNumber;
-        private System.Windows.Forms.TextBox txtChequeAmount;
         private System.Windows.Forms.TextBox txtPriceHardClearLayer;
         private System.Windows.Forms.TextBox txtPriceHardRedLayer;
         private System.Windows.Forms.Label label32;
@@ -1937,5 +1966,22 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.CheckBox chkSakshen;
+        private System.Windows.Forms.GroupBox grpPayments;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox totalchekmony;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpChequeDate;
+        private System.Windows.Forms.TextBox txtChequeNumber;
+        private System.Windows.Forms.TextBox txtChequeAmount;
+        private System.Windows.Forms.Button btnRemoveCheque;
+        private System.Windows.Forms.Button btnAddCheque;
+        private System.Windows.Forms.DataGridView dgvCheques;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtPaymentNotes;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbPaymentType;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtTottalCheque;
     }
 }

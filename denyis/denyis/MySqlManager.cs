@@ -324,15 +324,13 @@ namespace denyis
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("INSERT INTO payments (patient_id, payment_type, amount, paid_at, cheque_count, cheque_number, cheque_date, notes) VALUES (@PatientId, @PaymentType, @Amount, @PaidAt, @ChequeCount, @ChequeNumber, @ChequeDate, @Notes); SELECT LAST_INSERT_ID();", conn);
+                var cmd = new MySqlCommand("INSERT INTO payments (patient_id, total_amount, payment_method, notes, cheque_count, created_at) VALUES (@PatientId, @TotalAmount, @PaymentMethod, @Notes, @ChequeCount, @CreatedAt); SELECT LAST_INSERT_ID();", conn);
                 cmd.Parameters.AddWithValue("@PatientId", payment.PatientId);
-                cmd.Parameters.AddWithValue("@PaymentType", payment.PaymentType);
-                cmd.Parameters.AddWithValue("@Amount", payment.Amount);
-                cmd.Parameters.AddWithValue("@PaidAt", payment.PaidAt);
-                cmd.Parameters.AddWithValue("@ChequeCount", payment.ChequeCount);
-                cmd.Parameters.AddWithValue("@ChequeNumber", payment.ChequeNumber);
-                cmd.Parameters.AddWithValue("@ChequeDate", payment.ChequeDate);
+                cmd.Parameters.AddWithValue("@TotalAmount", payment.TotalAmount);
+                cmd.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod);
                 cmd.Parameters.AddWithValue("@Notes", payment.Notes);
+                cmd.Parameters.AddWithValue("@ChequeCount", payment.ChequeCount);
+                cmd.Parameters.AddWithValue("@CreatedAt", payment.CreatedAt);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
@@ -351,15 +349,13 @@ namespace denyis
                     {
                         list.Add(new Payment
                         {
-                            Id = reader.GetInt32("id"),
+                            PaymentId = reader.GetInt32("payment_id"),
                             PatientId = reader.GetInt32("patient_id"),
-                            PaymentType = reader.GetString("payment_type"),
-                            Amount = reader.GetDecimal("amount"),
-                            PaidAt = reader.GetDateTime("paid_at"),
+                            TotalAmount = reader.GetDecimal("total_amount"),
+                            PaymentMethod = reader.GetString("payment_method"),
+                            Notes = reader.GetString("notes"),
                             ChequeCount = reader.GetInt32("cheque_count"),
-                            ChequeNumber = reader.GetString("cheque_number"),
-                            ChequeDate = reader.GetDateTime("cheque_date"),
-                            Notes = reader.GetString("notes")
+                            CreatedAt = reader.GetDateTime("created_at")
                         });
                     }
                 }
@@ -372,29 +368,130 @@ namespace denyis
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("UPDATE payments SET payment_type=@PaymentType, amount=@Amount, paid_at=@PaidAt, cheque_count=@ChequeCount, cheque_number=@ChequeNumber, cheque_date=@ChequeDate, notes=@Notes WHERE id=@Id", conn);
-                cmd.Parameters.AddWithValue("@PaymentType", payment.PaymentType);
-                cmd.Parameters.AddWithValue("@Amount", payment.Amount);
-                cmd.Parameters.AddWithValue("@PaidAt", payment.PaidAt);
-                cmd.Parameters.AddWithValue("@ChequeCount", payment.ChequeCount);
-                cmd.Parameters.AddWithValue("@ChequeNumber", payment.ChequeNumber);
-                cmd.Parameters.AddWithValue("@ChequeDate", payment.ChequeDate);
+                var cmd = new MySqlCommand("UPDATE payments SET total_amount=@TotalAmount, payment_method=@PaymentMethod, notes=@Notes, cheque_count=@ChequeCount WHERE payment_id=@PaymentId", conn);
+                cmd.Parameters.AddWithValue("@TotalAmount", payment.TotalAmount);
+                cmd.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod);
                 cmd.Parameters.AddWithValue("@Notes", payment.Notes);
-                cmd.Parameters.AddWithValue("@Id", payment.Id);
+                cmd.Parameters.AddWithValue("@ChequeCount", payment.ChequeCount);
+                cmd.Parameters.AddWithValue("@PaymentId", payment.PaymentId);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void DeletePayment(int id)
+        public void DeletePayment(int paymentId)
         {
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("DELETE FROM payments WHERE id=@Id", conn);
-                cmd.Parameters.AddWithValue("@Id", id);
+                var cmd = new MySqlCommand("DELETE FROM payments WHERE payment_id=@PaymentId", conn);
+                cmd.Parameters.AddWithValue("@PaymentId", paymentId);
                 cmd.ExecuteNonQuery();
             }
         }
+
+        // CRUD برای جدول چک‌ها
+        public int AddCheque(Cheque cheque)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("INSERT INTO cheques (patient_id, payment_id, cheque_number, cheque_amount, cheque_date, is_default, created_at) VALUES (@PatientId, @PaymentId, @ChequeNumber, @ChequeAmount, @ChequeDate, @IsDefault, @CreatedAt); SELECT LAST_INSERT_ID();", conn);
+                cmd.Parameters.AddWithValue("@PatientId", cheque.PatientId);
+                cmd.Parameters.AddWithValue("@PaymentId", cheque.PaymentId);
+                cmd.Parameters.AddWithValue("@ChequeNumber", cheque.ChequeNumber);
+                cmd.Parameters.AddWithValue("@ChequeAmount", cheque.ChequeAmount);
+                cmd.Parameters.AddWithValue("@ChequeDate", cheque.ChequeDate);
+                cmd.Parameters.AddWithValue("@IsDefault", cheque.IsDefault);
+                cmd.Parameters.AddWithValue("@CreatedAt", cheque.CreatedAt);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public List<Cheque> GetChequesByPatientId(int patientId)
+        {
+            var list = new List<Cheque>();
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM cheques WHERE patient_id=@PatientId", conn);
+                cmd.Parameters.AddWithValue("@PatientId", patientId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Cheque
+                        {
+                            ChequeId = reader.GetInt32("cheque_id"),
+                            PatientId = reader.GetInt32("patient_id"),
+                            PaymentId = reader.GetInt32("payment_id"),
+                            ChequeNumber = reader.GetString("cheque_number"),
+                            ChequeAmount = reader.GetDecimal("cheque_amount"),
+                            ChequeDate = reader.GetDateTime("cheque_date"),
+                            IsDefault = reader.GetBoolean("is_default"),
+                            CreatedAt = reader.GetDateTime("created_at")
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Cheque> GetChequesByPaymentId(int paymentId)
+        {
+            var list = new List<Cheque>();
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM cheques WHERE payment_id=@PaymentId", conn);
+                cmd.Parameters.AddWithValue("@PaymentId", paymentId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Cheque
+                        {
+                            ChequeId = reader.GetInt32("cheque_id"),
+                            PatientId = reader.GetInt32("patient_id"),
+                            PaymentId = reader.GetInt32("payment_id"),
+                            ChequeNumber = reader.GetString("cheque_number"),
+                            ChequeAmount = reader.GetDecimal("cheque_amount"),
+                            ChequeDate = reader.GetDateTime("cheque_date"),
+                            IsDefault = reader.GetBoolean("is_default"),
+                            CreatedAt = reader.GetDateTime("created_at")
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public void UpdateCheque(Cheque cheque)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("UPDATE cheques SET cheque_number=@ChequeNumber, cheque_amount=@ChequeAmount, cheque_date=@ChequeDate, is_default=@IsDefault WHERE cheque_id=@ChequeId", conn);
+                cmd.Parameters.AddWithValue("@ChequeNumber", cheque.ChequeNumber);
+                cmd.Parameters.AddWithValue("@ChequeAmount", cheque.ChequeAmount);
+                cmd.Parameters.AddWithValue("@ChequeDate", cheque.ChequeDate);
+                cmd.Parameters.AddWithValue("@IsDefault", cheque.IsDefault);
+                cmd.Parameters.AddWithValue("@ChequeId", cheque.ChequeId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteCheque(int chequeId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("DELETE FROM cheques WHERE cheque_id=@ChequeId", conn);
+                cmd.Parameters.AddWithValue("@ChequeId", chequeId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
 
         // CRUD برای cases
         public int AddCase(Case c)
@@ -430,7 +527,7 @@ namespace denyis
                             PatientId = reader.GetInt32("patient_id"),
                             Status = reader.GetString("status"),
                             Description = reader.GetString("description"),
-                            //VisitReason = reader.IsDBNull("visit_reason") ? "" : reader.GetString("visit_reason"),
+                            VisitReason = reader.IsDBNull(reader.GetOrdinal("visit_reason")) ? "" : reader.GetString("visit_reason"),
                             LastUpdate = reader.GetDateTime("last_update")
                         });
                     }
@@ -461,6 +558,19 @@ namespace denyis
                 conn.Open();
                 var cmd = new MySqlCommand("DELETE FROM cases WHERE id=@Id", conn);
                 cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // متد برای اضافه کردن رکورد تست به جدول cases
+        public void AddTestCase(int patientId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("INSERT INTO cases (patient_id, status, description, visit_reason, last_update) VALUES (@PatientId, 'active', 'تست', 'درد دندان', @LastUpdate)", conn);
+                cmd.Parameters.AddWithValue("@PatientId", patientId);
+                cmd.Parameters.AddWithValue("@LastUpdate", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
         }

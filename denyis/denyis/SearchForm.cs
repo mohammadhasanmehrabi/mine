@@ -123,6 +123,71 @@ namespace denyis
                 "C1", "C2", "C3", "C4",
                 "D2", "D3", "D4"
             });
+
+            // تنظیم ComboBox نوع دندان
+            LoadToothTypesFromInventory();
+        }
+
+        private void LoadToothTypesFromInventory()
+        {
+            try
+            {
+                cmbToothType.Items.Clear();
+                cmbToothType.Items.Add("انتخاب کنید");
+                var dentalItems = mysqlManager.GetDentalItemsFromInventory();
+                foreach (var item in dentalItems)
+                {
+                    cmbToothType.Items.Add(item.ProductName);
+                }
+                cmbToothType.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در بارگذاری انواع دندان: {ex.Message}", "خطا",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadChequesToDataGridView(List<Cheque> cheques)
+        {
+            try
+            {
+                if (dgvCheques != null)
+                {
+                    dgvCheques.AutoGenerateColumns = false;
+                    dgvCheques.Columns.Clear();
+                    
+                    dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "ChequeNumber",
+                        HeaderText = "شماره چک",
+                        Width = 120
+                    });
+
+                    dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "ChequeAmount",
+                        HeaderText = "مبلغ",
+                        Width = 100,
+                        DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" }
+                    });
+
+                    dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "ChequeDate",
+                        HeaderText = "تاریخ چک",
+                        Width = 120,
+                        DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy/MM/dd" }
+                    });
+
+                    dgvCheques.DataSource = cheques;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در بارگذاری چک‌ها: {ex.Message}", "خطا",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -157,9 +222,22 @@ namespace denyis
                 if (cases.Count > 0)
                 {
                     var caseInfo = cases[0];
-                    txtVisitReason.Text = caseInfo.VisitReason;
-                    cmbTreatmentStatus.Text = caseInfo.Status;
-                    txtDoctorNote.Text = caseInfo.Description;
+                    txtVisitReason.Text = caseInfo.VisitReason ?? "";
+                    cmbTreatmentStatus.Text = caseInfo.Status ?? "";
+                    txtDoctorNote.Text = caseInfo.Description ?? "";
+                    
+                    // دیباگ - نمایش اطلاعات در کنسول
+                    Console.WriteLine($"VisitReason: '{caseInfo.VisitReason}'");
+                    Console.WriteLine($"Status: '{caseInfo.Status}'");
+                    Console.WriteLine($"Description: '{caseInfo.Description}'");
+                }
+                else
+                {
+                    // اگر هیچ رکوردی در جدول cases نباشه
+                    txtVisitReason.Text = "";
+                    cmbTreatmentStatus.Text = "";
+                    txtDoctorNote.Text = "";
+                    Console.WriteLine("هیچ رکوردی در جدول cases یافت نشد");
                 }
 
                 // 3. بارگذاری اطلاعات ویزیت (visits)
@@ -181,8 +259,22 @@ namespace denyis
                 if (payments.Count > 0)
                 {
                     var payment = payments[0];
-                    cmbPaymentType.Text = payment.PaymentType ?? "";
+                    cmbPaymentType.Text = payment.PaymentMethod ?? "";
                     txtPaymentNotes.Text = payment.Notes ?? "";
+                    
+                    // بارگذاری چک‌ها
+                    var cheques = mysqlManager.GetChequesByPatientId(patientId);
+                    LoadChequesToDataGridView(cheques);
+                    
+                    // نمایش تعداد چک‌ها و مبلغ کل
+                    if (txtTottalCheque != null)
+                    {
+                        txtTottalCheque.Text = payment.ChequeCount.ToString();
+                    }
+                    if (totalchekmony != null)
+                    {
+                        totalchekmony.Text = payment.TotalAmount.ToString("N0");
+                    }
                 }
 
                 // 5. بارگذاری اطلاعات دندان‌ها (teeth)
@@ -194,6 +286,7 @@ namespace denyis
                     txttotal_price.Text = tooth.TotalPrice.ToString();
                     cmbTeethSize.Text = tooth.ToothSize ?? "";
                     cmbTeethColor.Text = tooth.ToothColor ?? "";
+                    cmbToothType.Text = tooth.ToothType ?? "";
 
                     // بارگذاری ویژگی‌های اضافی دندان
                     LoadAdditionalFeatures(tooth);
@@ -358,7 +451,7 @@ namespace denyis
                 if (payments.Count > 0)
                 {
                     var payment = payments[0];
-                    payment.PaymentType = cmbPaymentType.Text;
+                    payment.PaymentMethod = cmbPaymentType.Text;
                     payment.Notes = txtPaymentNotes.Text.Trim();
                     mysqlManager.UpdatePayment(payment);
                 }
@@ -454,6 +547,20 @@ namespace denyis
 
             cmbPaymentType.SelectedIndex = -1;
             txtPaymentNotes.Clear();
+            
+            // پاک کردن چک‌ها
+            if (dgvCheques != null)
+            {
+                dgvCheques.DataSource = null;
+            }
+            if (txtTottalCheque != null)
+            {
+                txtTottalCheque.Clear();
+            }
+            if (totalchekmony != null)
+            {
+                totalchekmony.Clear();
+            }
 
             // پاک کردن ویژگی‌های اضافی دندان
             ClearAdditionalFeatures();
@@ -462,6 +569,7 @@ namespace denyis
             txttotal_price.Clear();
             cmbTeethSize.SelectedIndex = -1;
             cmbTeethColor.SelectedIndex = -1;
+            cmbToothType.SelectedIndex = -1;
             txtSelectedTeeth.Clear();
 
             picToothImage.Image = null;
@@ -705,5 +813,7 @@ namespace denyis
                 MessageBox.Show($"خطا در پاک کردن ویژگی‌های اضافی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
 }

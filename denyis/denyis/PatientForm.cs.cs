@@ -205,7 +205,6 @@ namespace denyis
             mysqlManager = new MySqlManager();
             SetupTeethComboBoxes();
             SetupChequeDataGridView();
-            SetupAdditionalTeethFeatures();
         }
         private void ToothButton_Click(object sender, EventArgs e)
         {
@@ -346,6 +345,14 @@ namespace denyis
             cmbPaymentType.SelectedIndex = -1;
             txtPaymentNotes.Clear();
             cheques.Clear();
+            if (totalchekmony != null)
+            {
+                totalchekmony.Clear();
+            }
+            if (txtTottalCheque != null)
+            {
+                txtTottalCheque.Clear();
+            }
             RefreshChequeDataGridView();
 
             // پاک کردن دندان‌های انتخاب شده
@@ -374,12 +381,10 @@ namespace denyis
             checkHardRedBottom.Checked = false;
             checkHardClearTop.Checked = false;
             checkHardClearBottom.Checked = false;
-            // پاک کردن chkSkeshen
-            var chkSkeshen = Controls.Find("chkSkeshen", true).FirstOrDefault() as CheckBox;
-            if (chkSkeshen != null)
-            {
-                chkSkeshen.Checked = false;
-            }
+            // پاک کردن chkSakshen (بدون فراخوانی event)
+            chkSakshen.CheckedChanged -= Sakshen_CheckedChanged;
+            chkSakshen.Checked = false;
+            chkSakshen.CheckedChanged += Sakshen_CheckedChanged;
 
             // پاک کردن قیمت‌های اضافی
             txtPriceBaseFracture.Clear();
@@ -607,14 +612,14 @@ namespace denyis
 
                 dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    DataPropertyName = "Number",
+                    DataPropertyName = "ChequeNumber",
                     HeaderText = "شماره چک",
                     Width = 120
                 });
 
                 dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    DataPropertyName = "Amount",
+                    DataPropertyName = "ChequeAmount",
                     HeaderText = "مبلغ",
                     Width = 100,
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" }
@@ -622,27 +627,20 @@ namespace denyis
 
                 dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    DataPropertyName = "Date",
+                    DataPropertyName = "ChequeDate",
                     HeaderText = "تاریخ چک",
                     Width = 120,
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy/MM/dd" }
-                });
-
-                dgvCheques.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    DataPropertyName = "Description",
-                    HeaderText = "توضیحات",
-                    Width = 150
                 });
 
                 // اضافه کردن یک چک پیش‌فرض
                 cheques.Clear();
                 cheques.Add(new Cheque
                 {
-                    Number = "1",
-                    Amount = 0,
-                    Date = DateTime.Now,
-                    Description = "چک پیش‌فرض"
+                    ChequeNumber = "1",
+                    ChequeAmount = 0,
+                    ChequeDate = DateTime.Now,
+                    IsDefault = true
                 });
                 RefreshChequeDataGridView();
             }
@@ -741,6 +739,13 @@ namespace denyis
                     }
                 }
 
+                // اضافه کردن مبلغ کل چک‌ها به قیمت کل
+                decimal totalChequeAmount = 0;
+                if (totalchekmony != null && decimal.TryParse(totalchekmony.Text, out totalChequeAmount))
+                {
+                    totalPrice += totalChequeAmount;
+                }
+
                 txttotal_price.Text = totalPrice.ToString("0.00");
             }
             catch
@@ -784,6 +789,15 @@ namespace denyis
             // تنظیم ComboBox های دندان
             SetupTeethComboBoxes();
             
+            // بارگذاری انواع دندان از انبار
+            LoadToothTypesFromInventory();
+            
+            // تنظیم ویژگی‌های اضافی دندان
+            SetupAdditionalTeethFeatures();
+            
+            // تنظیم جدول چک‌ها
+            SetupChequeDataGridView();
+            
             // محاسبه اولیه قیمت کل
             CalculateTotalPrice();
         }
@@ -825,10 +839,10 @@ namespace denyis
 
                 var cheque = new Cheque
                 {
-                    Number = txtChequeNumber.Text.Trim(),
-                    Amount = amount,
-                    Date = dtpChequeDate.Value,
-                    Description = txtPaymentNotes.Text.Trim()
+                    ChequeNumber = txtChequeNumber.Text.Trim(),
+                    ChequeAmount = amount,
+                    ChequeDate = dtpChequeDate.Value,
+                    IsDefault = false
                 };
 
                 cheques.Add(cheque);
@@ -911,14 +925,69 @@ namespace denyis
                 dgvCheques.DataSource = cheques;
                 
                 // تنظیم نمایش تاریخ به فارسی
-                if (dgvCheques.Columns["Date"] != null)
+                if (dgvCheques.Columns["ChequeDate"] != null)
                 {
-                    dgvCheques.Columns["Date"].DefaultCellStyle.Format = "yyyy/MM/dd";
+                    dgvCheques.Columns["ChequeDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+                }
+                
+                // محاسبه جمع کل چک‌ها
+                CalculateTotalChequeAmount();
+                
+                // اگر چکی نباشه، چک پیش‌فرض اضافه کن
+                if (cheques.Count == 0)
+                {
+                    cheques.Add(new Cheque
+                    {
+                        ChequeNumber = "1",
+                        ChequeAmount = 0,
+                        ChequeDate = DateTime.Now,
+                        IsDefault = true
+                    });
+                    dgvCheques.DataSource = null;
+                    dgvCheques.DataSource = cheques;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"خطا در به‌روزرسانی جدول چک‌ها: {ex.Message}", "خطا", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CalculateTotalChequeAmount()
+        {
+            try
+            {
+                decimal totalAmount = 0;
+                int validChequeCount = 0;
+                
+                foreach (var cheque in cheques)
+                {
+                    if (cheque.ChequeAmount > 0 && !cheque.IsDefault)
+                    {
+                        totalAmount += cheque.ChequeAmount;
+                        validChequeCount++;
+                    }
+                }
+                
+                // نمایش در TextBox totalchekmony
+                if (totalchekmony != null)
+                {
+                    totalchekmony.Text = totalAmount.ToString("N0");
+                }
+                
+                // نمایش تعداد چک‌ها در txtTottalCheque
+                if (txtTottalCheque != null)
+                {
+                    txtTottalCheque.Text = validChequeCount.ToString();
+                }
+                
+                // به‌روزرسانی قیمت کل
+                CalculateTotalPrice();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در محاسبه جمع کل چک‌ها: {ex.Message}", "خطا",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -932,7 +1001,7 @@ namespace denyis
             chkHardRedDown.CheckedChanged += AdditionalFeature_CheckedChanged;
             chkHardClearTop.CheckedChanged += AdditionalFeature_CheckedChanged;
             chkHardClearDown.CheckedChanged += AdditionalFeature_CheckedChanged;
-            chkSakshen.CheckedChanged += AdditionalFeature_CheckedChanged;
+            chkSakshen.CheckedChanged += Sakshen_CheckedChanged;
 
             // اضافه کردن event handlers برای combo box ها
             comboBaseFractureTop.SelectedIndexChanged += ComboBaseFracture_SelectedIndexChanged;
@@ -944,6 +1013,75 @@ namespace denyis
             txtPriceHardRedLayer.TextChanged += PriceTextBox_TextChanged;
             txtPriceHardClearLayer.TextChanged += PriceTextBox_TextChanged;
             saksionprice.TextChanged += PriceTextBox_TextChanged;
+        }
+
+        private void Sakshen_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkSakshen.Checked)
+                {
+                    // وقتی ساکشن انتخاب شد
+                    var allItems = mysqlManager.GetAllInventoryItems();
+                    var sakshenItem = allItems.FirstOrDefault(item => 
+                        item.ProductName == "ساکشن" && 
+                        (item.Category == "دندان پزشکی" || item.Category == "دندان"));
+                    
+                    if (sakshenItem != null && sakshenItem.Quantity > 0)
+                    {
+                        // کم کردن 1 عدد از موجودی
+                        sakshenItem.Quantity -= 1;
+                        mysqlManager.UpdateInventoryItem(sakshenItem);
+                        
+                        // تنظیم قیمت ساکشن
+                        saksionprice.Text = sakshenItem.UnitPrice.ToString("N0");
+                        
+                        MessageBox.Show($"1 عدد ساکشن از انبار کم شد.\nموجودی جدید: {sakshenItem.Quantity} عدد", 
+                            "کم کردن موجودی", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (sakshenItem != null && sakshenItem.Quantity <= 0)
+                    {
+                        chkSakshen.Checked = false;
+                        MessageBox.Show("موجودی ساکشن تمام شده است!", 
+                            "هشدار موجودی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        chkSakshen.Checked = false;
+                        MessageBox.Show("ساکشن در انبار یافت نشد!", 
+                            "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // وقتی ساکشن از انتخاب برداشته شد
+                    var allItems = mysqlManager.GetAllInventoryItems();
+                    var sakshenItem = allItems.FirstOrDefault(item => 
+                        item.ProductName == "ساکشن" && 
+                        (item.Category == "دندان پزشکی" || item.Category == "دندان"));
+                    
+                    if (sakshenItem != null)
+                    {
+                        // اضافه کردن 1 عدد به موجودی
+                        sakshenItem.Quantity += 1;
+                        mysqlManager.UpdateInventoryItem(sakshenItem);
+                        
+                        // پاک کردن قیمت ساکشن
+                        saksionprice.Clear();
+                        
+                        MessageBox.Show($"1 عدد ساکشن به انبار اضافه شد.\nموجودی جدید: {sakshenItem.Quantity} عدد", 
+                            "اضافه کردن موجودی", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                
+                // محاسبه مجدد قیمت کل
+                CalculateTotalPrice();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطا در مدیریت ساکشن: {ex.Message}", "خطا", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClearForm_Click(object sender, EventArgs e)
@@ -1000,39 +1138,45 @@ namespace denyis
                     mysqlManager.AddVisit(visit);
 
                     // 4. ذخیره اطلاعات پرداخت (payments)
-                    // ذخیره چک‌ها
-                    string selectedPaymentType = cmbPaymentType.SelectedItem?.ToString() ?? "نقد";
+                    string selectedPaymentMethod = cmbPaymentType.SelectedItem?.ToString() ?? "نقد";
+                    decimal totalAmount = 0;
+                    int chequeCount = 0;
                     
-                    if (cheques.Count > 0)
+                    // محاسبه مبلغ کل و تعداد چک‌های معتبر
+                    var validCheques = cheques.Where(c => c.ChequeAmount > 0 && !c.IsDefault).ToList();
+                    chequeCount = validCheques.Count;
+                    
+                    // محاسبه مبلغ کل از totalchekmony
+                    if (totalchekmony != null && decimal.TryParse(totalchekmony.Text, out totalAmount))
                     {
-                        // ذخیره هر چک به صورت جداگانه
-                        foreach (var cheque in cheques)
-                        {
-                            var payment = new Payment
-                            {
-                                PatientId = patientId,
-                                PaymentType = "چک",
-                                Amount = cheque.Amount,
-                                PaidAt = DateTime.Now,
-                                ChequeNumber = cheque.Number,
-                                ChequeDate = cheque.Date,
-                                Notes = cheque.Description
-                            };
-                            mysqlManager.AddPayment(payment);
-                        }
+                        // مبلغ کل از فیلد totalchekmony گرفته میشه
                     }
                     else
                     {
-                        // اگر چکی نباشد، یک رکورد پرداخت نقدی ذخیره کن
-                        var payment = new Payment
-                        {
-                            PatientId = patientId,
-                            PaymentType = selectedPaymentType,
-                            Amount = 0,
-                            PaidAt = DateTime.Now,
-                            Notes = txtPaymentNotes.Text.Trim()
-                        };
-                        mysqlManager.AddPayment(payment);
+                        // اگر totalchekmony خالی باشه، جمع چک‌ها رو حساب کن
+                        totalAmount = validCheques.Sum(c => c.ChequeAmount);
+                    }
+                    
+                    // ذخیره رکورد اصلی پرداخت
+                    var payment = new Payment
+                    {
+                        PatientId = patientId,
+                        TotalAmount = totalAmount,
+                        PaymentMethod = selectedPaymentMethod,
+                        Notes = txtPaymentNotes.Text.Trim(),
+                        ChequeCount = chequeCount,
+                        CreatedAt = DateTime.Now
+                    };
+                    
+                    int paymentId = mysqlManager.AddPayment(payment);
+                    
+                    // ذخیره چک‌های معتبر
+                    foreach (var cheque in validCheques)
+                    {
+                        cheque.PatientId = patientId;
+                        cheque.PaymentId = paymentId;
+                        cheque.CreatedAt = DateTime.Now;
+                        mysqlManager.AddCheque(cheque);
                     }
 
                     // 5. ذخیره دندان‌های انتخاب شده (teeth) - همه در یک رکورد
